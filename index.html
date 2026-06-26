@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>민경이즘 | 25년차 헤어디렉터 · 이미지컨설턴트</title>
+  <meta name="description" content="첫인상을 바꾸는 헤어 × 이미지메이킹. 1:1 컨설팅, VOD, 전자책부터 기업 강연·교육까지. 건국대 겸임교수 민경이 함께합니다." />
+
+  <!-- Pretendard (CDN) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+
+  <!-- Tailwind CSS (Play CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: "#c591e4",        // 라일락 (포인트)
+            "primary-soft": "#efe2f8", // 연라일락 (배경·배지)
+            "primary-deep": "#6b3fa0", // 딥퍼플 (보조 텍스트)
+            violet: "#7c3aed",         // 진한 바이올렛 (레퍼런스 메인 보라)
+            "violet-deep": "#5b21b6",  // 더 진한 보라 (그라데이션 끝)
+            accent: "#3ee6a0",         // 민트 (손그림 스퀴글)
+            ink: "#1f1a2e",
+            "ink-soft": "#6b6577",
+            lavender: "#f6f3fb",
+          },
+          fontFamily: { sans: ["Pretendard", "ui-sans-serif", "system-ui", "sans-serif"] },
+          borderRadius: { card: "24px" },
+          boxShadow: {
+            card: "0 10px 40px -12px rgba(107, 63, 160, 0.18)",
+            "card-hover": "0 18px 50px -12px rgba(124, 58, 237, 0.30)",
+            pill: "0 8px 24px -6px rgba(124, 58, 237, 0.45)",
+          },
+          keyframes: {
+            marquee: { "0%": { transform: "translateX(0)" }, "100%": { transform: "translateX(-50%)" } },
+            "fade-up": { "0%": { opacity: "0", transform: "translateY(16px)" }, "100%": { opacity: "1", transform: "translateY(0)" } },
+          },
+          animation: {
+            marquee: "marquee 28s linear infinite",
+            "fade-up": "fade-up 0.6s ease-out both",
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Tailwind @apply 컴포넌트 -->
+  <style type="text/tailwindcss">
+    @layer components {
+      /* 메인 CTA: 라일락 → 바이올렛 그라데이션 */
+      .btn-primary {
+        @apply inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-primary to-violet px-7 py-3.5 font-bold text-white shadow-pill transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0;
+      }
+      .btn-outline {
+        @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-violet bg-white px-7 py-3.5 font-bold text-violet transition-colors duration-200 hover:bg-primary-soft;
+      }
+      .btn-white {
+        @apply inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-3.5 font-bold text-violet shadow-md transition-transform duration-200 hover:-translate-y-0.5;
+      }
+      .section-pad { @apply mx-auto max-w-6xl px-5 py-20 sm:px-6 md:py-28; }
+      .eyebrow { @apply mb-3 inline-block rounded-full bg-primary-soft px-4 py-1.5 text-sm font-bold text-violet; }
+      .h-section { @apply text-3xl font-extrabold leading-tight text-ink sm:text-4xl md:text-[2.6rem]; }
+      .icon-box { @apply grid place-items-center rounded-2xl bg-primary-soft text-violet; }
+    }
+  </style>
+
+  <!-- 순수 CSS -->
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: "Pretendard", ui-sans-serif, system-ui, sans-serif; }
+    section[id] { scroll-margin-top: 88px; }
+
+    .squiggle { position: relative; display: inline-block; }
+    .squiggle::after {
+      content: ""; position: absolute; left: -2%; right: -2%; bottom: -0.12em;
+      height: 0.42em; background-repeat: no-repeat; background-size: 100% 100%; z-index: -1;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 18' preserveAspectRatio='none'%3E%3Cpath d='M3 13C45 6 80 6 110 9c25 2 50 4 87-3' stroke='%233ee6a0' stroke-width='6' stroke-linecap='round' fill='none'/%3E%3C/svg%3E");
+    }
+
+    /* 바이올렛→핑크 그라데이션 숫자 */
+    .grad-number {
+      background: linear-gradient(90deg, #7c3aed 0%, #c591e4 50%, #f4a6d7 100%);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+
+    .marquee-mask {
+      -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+      mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    }
+
+    .faq-panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .3s ease; }
+    .faq-item.open .faq-panel { grid-template-rows: 1fr; }
+    .faq-panel > div { overflow: hidden; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+    .no-scrollbar { scrollbar-width: none; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+
+    .dot-pattern {
+      background-image: radial-gradient(circle, rgba(255,255,255,0.55) 2px, transparent 2px);
+      background-size: 28px 28px;
+    }
+
+    /* 히어로 오로라 배경: 떠다니는 블롭 + 옅은 점 텍스처 */
+    @keyframes floaty {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(12px, -20px) scale(1.06); }
+    }
+    .floaty { animation: floaty 8s ease-in-out infinite; }
+    .floaty-slow { animation: floaty 12s ease-in-out infinite; }
+    @media (prefers-reduced-motion: reduce) {
+      .floaty, .floaty-slow { animation: none; }
+    }
+    .dot-pattern-light {
+      background-image: radial-gradient(circle, rgba(124,58,237,0.12) 1.5px, transparent 1.5px);
+      background-size: 26px 26px;
+      -webkit-mask-image: radial-gradient(ellipse 65% 60% at 72% 42%, black, transparent 75%);
+      mask-image: radial-gradient(ellipse 65% 60% at 72% 42%, black, transparent 75%);
+    }
+  </style>
+</head>
+
+<body class="bg-white text-ink antialiased">
+
+  <!-- ===== Header ===== -->
+  <header id="site-header" class="fixed inset-x-0 top-0 z-50 bg-white/70 backdrop-blur transition-all duration-300">
+    <div class="mx-auto flex h-[72px] max-w-6xl items-center justify-between px-5 sm:px-6">
+      <a href="#top" class="flex items-center gap-2">
+        <span class="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-primary to-violet text-lg font-black text-white">민</span>
+        <span class="text-xl font-extrabold tracking-tight text-ink">민경이즘</span>
+      </a>
+
+      <nav class="hidden items-center gap-8 md:flex">
+        <a href="#about" class="text-[15px] font-semibold text-ink-soft transition-colors hover:text-violet">소개</a>
+        <a href="#offers" class="text-[15px] font-semibold text-ink-soft transition-colors hover:text-violet">상품</a>
+        <a href="#archive" class="text-[15px] font-semibold text-ink-soft transition-colors hover:text-violet">무료 아카이브</a>
+        <a href="#testimonials" class="text-[15px] font-semibold text-ink-soft transition-colors hover:text-violet">후기</a>
+        <a href="#faq" class="text-[15px] font-semibold text-ink-soft transition-colors hover:text-violet">FAQ</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <a href="#lead" class="hidden btn-primary !px-5 !py-2.5 text-sm sm:inline-flex">무료자료 받기</a>
+        <button id="menu-btn" type="button" aria-label="메뉴 열기" class="grid h-10 w-10 place-items-center rounded-xl border border-primary-soft md:hidden">
+          <div class="space-y-[5px]">
+            <span class="menu-bar block h-0.5 w-5 bg-ink transition"></span>
+            <span class="menu-bar block h-0.5 w-5 bg-ink transition"></span>
+            <span class="menu-bar block h-0.5 w-5 bg-ink transition"></span>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <nav id="mobile-menu" class="hidden border-t border-primary-soft bg-white px-5 py-4 md:hidden">
+      <div class="flex flex-col gap-1">
+        <a href="#about" class="m-link rounded-xl px-3 py-3 font-semibold text-ink hover:bg-lavender">소개</a>
+        <a href="#offers" class="m-link rounded-xl px-3 py-3 font-semibold text-ink hover:bg-lavender">상품</a>
+        <a href="#archive" class="m-link rounded-xl px-3 py-3 font-semibold text-ink hover:bg-lavender">무료 아카이브</a>
+        <a href="#testimonials" class="m-link rounded-xl px-3 py-3 font-semibold text-ink hover:bg-lavender">후기</a>
+        <a href="#faq" class="m-link rounded-xl px-3 py-3 font-semibold text-ink hover:bg-lavender">FAQ</a>
+        <a href="#lead" class="m-link btn-primary mt-2">무료자료 받기</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ===== 1. Hero ===== -->
+    <section id="top" class="relative overflow-hidden bg-gradient-to-b from-primary-soft/50 via-white to-white pt-[72px]">
+      <!-- 오로라 그라데이션 블롭 (떠다님) -->
+      <div class="pointer-events-none absolute inset-0 overflow-hidden">
+        <div class="floaty-slow absolute -top-24 right-[-100px] h-[460px] w-[460px] rounded-full bg-primary/45 blur-3xl"></div>
+        <div class="floaty absolute top-20 left-[-120px] h-[380px] w-[380px] rounded-full bg-violet/20 blur-3xl"></div>
+        <div class="floaty absolute bottom-[-90px] left-1/3 h-[320px] w-[320px] rounded-full bg-accent/20 blur-3xl"></div>
+        <div class="floaty-slow absolute top-1/3 right-1/4 h-[260px] w-[260px] rounded-full bg-pink-300/30 blur-3xl"></div>
+        <!-- 옅은 점 텍스처 (오른쪽 사진 주변에 집중) -->
+        <div class="dot-pattern-light absolute inset-0"></div>
+      </div>
+      <!-- 손그림 스퀴글 -->
+      <svg aria-hidden="true" viewBox="0 0 220 120" fill="none" class="pointer-events-none absolute left-2 top-40 hidden h-28 w-44 opacity-90 md:block">
+        <path d="M10 20c30 0 40 80 70 80s30-70 60-70 40 60 70 40" stroke="#3ee6a0" stroke-width="7" stroke-linecap="round" />
+      </svg>
+      <svg aria-hidden="true" viewBox="0 0 120 120" fill="none" class="pointer-events-none absolute right-6 top-28 hidden h-16 w-16 opacity-80 lg:block">
+        <path d="M20 60c0-22 18-40 40-40M60 100c22 0 40-18 40-40" stroke="#c591e4" stroke-width="8" stroke-linecap="round" />
+      </svg>
+
+      <div class="relative section-pad grid items-center gap-12 !py-16 md:!py-24 lg:grid-cols-2">
+        <div class="animate-fade-up">
+          <span class="eyebrow">건국대 겸임교수 · 이미지박사 · 25년차 현장 미용교수</span>
+          <h1 class="text-4xl font-extrabold leading-[1.15] tracking-tight text-ink sm:text-5xl md:text-[3.4rem]">
+            머리 하나 바꿨을 뿐인데,<br />
+            <span class="text-violet">첫인상</span>이 <span class="squiggle">달라졌습니다</span>
+          </h1>
+          <p class="mt-6 max-w-xl text-lg leading-relaxed text-ink-soft">
+            25년간 사람을 바꿔온 단 하나의 공식 — 헤어 × 이미지메이킹.<br class="hidden sm:block" />
+            개인 이미지 컨설팅부터 기업 강연까지, 현장과 학문을 모두 아는 전문가가 함께합니다.
+          </p>
+          <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+            <a href="#lead" class="btn-primary text-base">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              무료 헤어 가이드 받기
+            </a>
+            <a href="#contact" class="btn-outline text-base">강연 · 기업교육 문의</a>
+          </div>
+          <p class="mt-7 text-sm font-medium text-ink-soft">건국대 겸임교수 · 이미지박사 · 25년차 현장 미용교수</p>
+        </div>
+
+        <div class="relative mx-auto w-full max-w-md animate-fade-up">
+          <div class="absolute inset-0 -z-10 translate-x-4 translate-y-4 rounded-[2rem] bg-gradient-to-br from-primary to-violet opacity-30"></div>
+          <div class="aspect-[4/5] overflow-hidden rounded-[2rem] bg-primary-soft shadow-card">
+            <!-- 프로필 사진: images/profile-hero.jpg 파일을 넣어주세요 -->
+            <img src="images/profile-hero.jpg" alt="민경 프로필 사진" class="h-full w-full object-cover object-[50%_72%]" />
+          </div>
+          <div class="absolute -left-4 bottom-10 flex items-center gap-3 rounded-2xl bg-white px-4 py-3 shadow-card">
+            <span class="icon-box h-10 w-10">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="m6.34 6.34-.7-.7"/><path d="M22 12h-4"/><path d="M6 12H2"/><path d="m17.66 6.34.7-.7"/><path d="M12 18a6 6 0 0 0 0-12 6 6 0 0 0 0 12z"/></svg>
+            </span>
+            <div>
+              <p class="text-xs font-bold text-ink-soft">현장 경력</p>
+              <p class="text-xl font-extrabold text-violet">25년+</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 2. 신뢰 바 ===== -->
+    <section class="bg-slate-50">
+      <div class="mx-auto max-w-6xl px-5 py-16 sm:px-6">
+        <p class="text-center text-lg font-bold text-ink-soft">숫자로 증명하는 <span class="text-violet">25년의 신뢰</span></p>
+
+        <div class="mt-10 grid grid-cols-2 gap-8 md:grid-cols-4">
+          <div class="text-center">
+            <div class="grad-number text-4xl font-extrabold sm:text-5xl"><span data-count="25">0</span><span class="text-3xl sm:text-4xl">년</span></div>
+            <div class="mt-2 text-sm font-bold text-ink sm:text-base">헤어 현장 경력</div>
+          </div>
+          <div class="text-center">
+            <div class="grad-number text-4xl font-extrabold sm:text-5xl"><span data-count="10">0</span><span class="text-3xl sm:text-4xl">년+</span></div>
+            <div class="mt-2 text-sm font-bold text-ink sm:text-base">대학 강의 경력</div>
+          </div>
+          <div class="text-center">
+            <!-- TODO: 실제 누적 교육 인원으로 교체 -->
+            <div class="grad-number text-4xl font-extrabold sm:text-5xl"><span data-count="5000">0</span><span class="text-3xl sm:text-4xl">명+</span></div>
+            <div class="mt-2 text-sm font-bold text-ink sm:text-base">누적 교육 인원</div>
+          </div>
+          <div class="text-center">
+            <!-- TODO: 실제 출강 기관 수로 교체 -->
+            <div class="grad-number text-4xl font-extrabold sm:text-5xl"><span data-count="30">0</span><span class="text-3xl sm:text-4xl">곳+</span></div>
+            <div class="mt-2 text-sm font-bold text-ink sm:text-base">출강 기업·기관</div>
+          </div>
+        </div>
+
+        <!-- 로고 마퀴 (TODO: 텍스트 → 실제 로고 이미지) -->
+        <div class="marquee-mask mt-14 overflow-hidden">
+          <div class="flex w-max animate-marquee gap-12">
+            <span class="whitespace-nowrap text-lg font-bold text-ink/30">건국대학교</span>
+            <span class="whitespace-nowrap text-lg font-bold text-ink/30">교육연수원</span>
+            <span class="whitespace-nowrap text-lg font-bold text-ink/30">○○기업</span>
+            <span class="whitespace-nowrap text-lg font-bold text-ink/30">○○협회</span>
+            <span class="whitespace-nowrap text-lg font-bold text-ink/30">○○방송</span>
+            <span class="whitespace-nowrap text-lg font-bold text-ink/30">○○문화센터</span>
+            <span class="whitespace-nowrap text-lg font-bold text-ink/30">건국대학교</span>
+            <span class="whitespace-nowrap text-lg font-bold text-ink/30">교육연수원</span>
+            <span class="whitespace-nowrap text-lg font-bold text-ink/30">○○기업</span>
+            <span class="whitespace-nowrap text-lg font-bold text-ink/30">○○협회</span>
+            <span class="whitespace-nowrap text-lg font-bold text-ink/30">○○방송</span>
+            <span class="whitespace-nowrap text-lg font-bold text-ink/30">○○문화센터</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 3. 고민 공감 ===== -->
+    <section class="section-pad">
+      <div class="mx-auto max-w-2xl text-center">
+        <span class="eyebrow">고민 공감</span>
+        <h2 class="h-section">혹시 이런 고민, <span class="squiggle">있으신가요?</span></h2>
+      </div>
+      <div class="mt-12 grid gap-5 sm:grid-cols-2">
+        <div class="flex items-start gap-4 rounded-card border border-primary-soft bg-white p-6 shadow-card transition-shadow hover:shadow-card-hover">
+          <span class="icon-box h-12 w-12 shrink-0">
+            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><path d="M8.12 8.12 12 12"/><path d="M20 4 8.12 15.88"/><circle cx="6" cy="18" r="3"/><path d="M14.8 14.8 20 20"/></svg>
+          </span>
+          <div><p class="text-lg font-semibold leading-relaxed text-ink">“분명 머리를 했는데, 왜 어수선하고 손이 안 가요”</p></div>
+        </div>
+        <div class="flex items-start gap-4 rounded-card border border-primary-soft bg-white p-6 shadow-card transition-shadow hover:shadow-card-hover">
+          <span class="icon-box h-12 w-12 shrink-0">
+            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/></svg>
+          </span>
+          <div><p class="text-lg font-semibold leading-relaxed text-ink">“내 얼굴형엔 뭐가 어울리는지 도무지 모르겠어요”</p></div>
+        </div>
+        <div class="flex items-start gap-4 rounded-card border border-primary-soft bg-white p-6 shadow-card transition-shadow hover:shadow-card-hover">
+          <span class="icon-box h-12 w-12 shrink-0">
+            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/></svg>
+          </span>
+          <div>
+            <span class="mb-1 inline-block rounded-full bg-primary-soft px-2.5 py-0.5 text-xs font-bold text-violet">기업·기관</span>
+            <p class="text-lg font-semibold leading-relaxed text-ink">“직원들 이미지·서비스 교육, 어디에 맡길지 막막해요”</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4 rounded-card border border-primary-soft bg-white p-6 shadow-card transition-shadow hover:shadow-card-hover">
+          <span class="icon-box h-12 w-12 shrink-0">
+            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
+          </span>
+          <div><p class="text-lg font-semibold leading-relaxed text-ink">“거울 앞에서 매일 같은 실수를 반복하고 있어요”</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 다크 띠: 민경이즘의 약속 (보라 → 다크 + 민트 강조) ===== -->
+    <section class="relative overflow-hidden bg-ink">
+      <!-- 보라/민트 글로우 -->
+      <div class="pointer-events-none absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-violet/30 blur-3xl"></div>
+      <div class="pointer-events-none absolute -bottom-10 right-10 h-56 w-56 rounded-full bg-accent/20 blur-3xl"></div>
+      <svg aria-hidden="true" viewBox="0 0 220 120" fill="none" class="pointer-events-none absolute right-8 bottom-6 hidden h-24 w-40 opacity-90 md:block">
+        <path d="M10 20c30 0 40 80 70 80s30-70 60-70 40 60 70 40" stroke="#3ee6a0" stroke-width="7" stroke-linecap="round" />
+      </svg>
+      <div class="relative mx-auto max-w-4xl px-5 py-20 text-center sm:px-6 md:py-24">
+        <span class="mb-4 inline-block rounded-full bg-accent/15 px-4 py-1.5 text-sm font-bold text-accent">민경이즘의 약속</span>
+        <h2 class="text-2xl font-extrabold leading-snug text-white sm:text-3xl md:text-4xl">
+          “머리 하나가 바뀌면,<br class="sm:hidden" /> 인생의 <span class="text-accent">첫 장면</span>이 바뀝니다”
+        </h2>
+        <p class="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-white/70">
+          그 고민, 25년 현장과 강단에서 답을 찾아왔습니다. 이제 당신 차례입니다.
+        </p>
+        <a href="#lead" class="btn-primary mt-9 text-base">무료 헤어 가이드 받기</a>
+      </div>
+    </section>
+
+    <!-- ===== 4. 전문가 소개 ===== -->
+    <section id="about" class="bg-lavender">
+      <div class="section-pad grid items-center gap-12 lg:grid-cols-2">
+        <div class="relative mx-auto w-full max-w-md">
+          <svg aria-hidden="true" viewBox="0 0 220 120" fill="none" class="pointer-events-none absolute -right-6 -top-8 h-20 w-32 opacity-90" style="transform: scaleX(-1)">
+            <path d="M10 20c30 0 40 80 70 80s30-70 60-70 40 60 70 40" stroke="#3ee6a0" stroke-width="7" stroke-linecap="round" />
+          </svg>
+          <div class="aspect-[1164/1622] overflow-hidden rounded-[2rem] bg-white shadow-card">
+            <img src="images/lecture.png" alt="강의 · 현장 사진" class="h-full w-full object-cover object-center" />
+          </div>
+        </div>
+
+        <div>
+          <span class="eyebrow">전문가 소개</span>
+          <h2 class="h-section">왜 이 사람이어야 <span class="text-violet">할까요</span></h2>
+          <div class="mt-6 space-y-4 text-lg leading-relaxed text-ink-soft">
+            <p>현장 미용사로 시작해 25년. 수많은 분의 머리를 만지며 깨달은 건, <span class="font-semibold text-ink">‘머리’가 결국 그 사람의 첫인상 전체를 바꾼다</span>는 사실이었습니다.</p>
+            <p>그 깨달음을 학문으로 가져와 박사·겸임교수가 되었고, 이제는 개인 컨설팅부터 기업 강연까지 <span class="font-semibold text-ink">현장과 학문을 모두 아는 단 한 사람</span>으로 함께합니다.</p>
+          </div>
+          <!-- TODO: 실제 이력으로 검증·교체 -->
+          <ul class="mt-8 space-y-3">
+            <li class="flex items-start gap-3"><span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-gradient-to-br from-primary to-violet text-white"><svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="font-medium text-ink">건국대학교 교육대학원 겸임교수 (강의 10년차)</span></li>
+            <li class="flex items-start gap-3"><span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-gradient-to-br from-primary to-violet text-white"><svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="font-medium text-ink">이미지박사 — 건국대 일반대학원 향장미물학</span></li>
+            <li class="flex items-start gap-3"><span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-gradient-to-br from-primary to-violet text-white"><svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="font-medium text-ink">교육학석사 — 건국대 교육대학원 미용교육</span></li>
+            <li class="flex items-start gap-3"><span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-gradient-to-br from-primary to-violet text-white"><svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="font-medium text-ink">MIN BEAUTY HAIR 대표 (Since 2009 · 25년차)</span></li>
+            <li class="flex items-start gap-3"><span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-gradient-to-br from-primary to-violet text-white"><svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="font-medium text-ink">저서 『행복한 성공수업』</span></li>
+          </ul>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <!-- TODO: 실제 SNS 링크로 교체 -->
+            <a href="#" class="text-sm font-bold text-violet underline-offset-4 hover:underline">인스타그램 ↗</a>
+            <a href="#" class="text-sm font-bold text-violet underline-offset-4 hover:underline">유튜브 ↗</a>
+            <a href="#" class="text-sm font-bold text-violet underline-offset-4 hover:underline">블로그 ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 5. 상품 ===== -->
+    <section id="offers" class="section-pad">
+      <div class="mx-auto max-w-2xl text-center">
+        <span class="eyebrow">상품 안내</span>
+        <h2 class="h-section">당신에게 맞는 <span class="squiggle">시작점</span></h2>
+        <p class="mt-4 text-ink-soft">개인이든 기업이든, 필요한 만큼만 함께합니다.</p>
+      </div>
+
+      <!-- B2C -->
+      <div class="mt-14">
+        <h3 class="mb-6 flex items-center gap-2 text-lg font-extrabold text-ink">
+          <span class="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-primary to-violet text-white"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg></span>
+          개인을 위한 상품
+        </h3>
+        <div class="grid gap-5 md:grid-cols-3">
+          <div class="group flex flex-col rounded-card border border-primary/25 bg-primary-soft/50 p-7 shadow-card transition-all hover:-translate-y-1 hover:shadow-card-hover">
+            <span class="mb-5 grid h-16 w-16 place-items-center rounded-2xl bg-gradient-to-br from-primary to-violet text-white shadow-pill"><svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></span>
+            <span class="mb-2 inline-flex w-fit rounded-full bg-white/80 px-3 py-1 text-xs font-bold text-violet">개인</span>
+            <h3 class="text-xl font-extrabold text-ink">1:1 이미지·헤어 컨설팅</h3>
+            <p class="mt-3 flex-1 leading-relaxed text-ink-soft">얼굴형·헤어 기반 맞춤 진단. 다신 머리 망치지 않는 기준을 잡아드립니다.</p>
+            <a href="#contact" class="mt-6 inline-flex items-center gap-1.5 font-bold text-violet transition-transform group-hover:translate-x-1">신청하기 <span aria-hidden>→</span></a>
+          </div>
+          <div class="group flex flex-col rounded-card border border-fuchsia-200 bg-fuchsia-50 p-7 shadow-card transition-all hover:-translate-y-1 hover:shadow-card-hover">
+            <span class="mb-5 grid h-16 w-16 place-items-center rounded-2xl bg-gradient-to-br from-fuchsia-400 to-pink-500 text-white shadow-[0_8px_24px_-6px_rgba(217,70,239,0.5)]"><svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg></span>
+            <span class="mb-2 inline-flex w-fit rounded-full bg-white/80 px-3 py-1 text-xs font-bold text-fuchsia-600">개인</span>
+            <h3 class="text-xl font-extrabold text-ink">VOD 온라인 강의</h3>
+            <p class="mt-3 flex-1 leading-relaxed text-ink-soft">언제 어디서나 따라 하는 실전 스타일링. 집에서 만드는 미용실 퀄리티.</p>
+            <a href="#contact" class="mt-6 inline-flex items-center gap-1.5 font-bold text-fuchsia-600 transition-transform group-hover:translate-x-1">수강하기 <span aria-hidden>→</span></a>
+          </div>
+          <div class="group flex flex-col rounded-card border border-indigo-200 bg-indigo-50 p-7 shadow-card transition-all hover:-translate-y-1 hover:shadow-card-hover">
+            <span class="mb-5 grid h-16 w-16 place-items-center rounded-2xl bg-gradient-to-br from-indigo-400 to-violet-500 text-white shadow-[0_8px_24px_-6px_rgba(99,102,241,0.5)]"><svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span>
+            <span class="mb-2 inline-flex w-fit rounded-full bg-white/80 px-3 py-1 text-xs font-bold text-indigo-600">개인</span>
+            <h3 class="text-xl font-extrabold text-ink">전자책</h3>
+            <p class="mt-3 flex-1 leading-relaxed text-ink-soft">핵심만 압축한 실전 가이드. 평생 소장하는 헤어 교과서.</p>
+            <a href="#contact" class="mt-6 inline-flex items-center gap-1.5 font-bold text-indigo-600 transition-transform group-hover:translate-x-1">구매하기 <span aria-hidden>→</span></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- B2B -->
+      <div class="mt-12">
+        <h3 class="mb-6 flex items-center gap-2 text-lg font-extrabold text-ink">
+          <span class="grid h-8 w-8 place-items-center rounded-lg bg-emerald-500 text-white"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4M10 10h4M10 14h4"/></svg></span>
+          기업 · 기관을 위한 상품
+        </h3>
+        <div class="grid gap-5 md:grid-cols-2">
+          <div class="group flex flex-col rounded-card border border-emerald-200 bg-emerald-50 p-7 shadow-card transition-all hover:-translate-y-1 hover:shadow-card-hover">
+            <span class="mb-5 grid h-16 w-16 place-items-center rounded-2xl bg-gradient-to-br from-emerald-400 to-teal-500 text-white shadow-[0_8px_24px_-6px_rgba(16,185,129,0.5)]"><svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg></span>
+            <span class="mb-2 inline-flex w-fit rounded-full bg-white/80 px-3 py-1 text-xs font-bold text-emerald-700">기업·기관</span>
+            <h3 class="text-xl font-extrabold text-ink">외부 강연</h3>
+            <p class="mt-3 flex-1 leading-relaxed text-ink-soft">이미지메이킹 · 퍼스널 브랜딩 특강. 단체·협회·대학 대상.</p>
+            <a href="#contact" class="mt-6 inline-flex items-center gap-1.5 font-bold text-emerald-700 transition-transform group-hover:translate-x-1">강연 문의 <span aria-hidden>→</span></a>
+          </div>
+          <div class="group relative flex flex-col overflow-hidden rounded-card bg-gradient-to-br from-violet to-violet-deep p-7 text-white shadow-[0_20px_55px_-12px_rgba(124,58,237,0.65)] ring-1 ring-white/15 transition-all hover:-translate-y-1.5 hover:shadow-[0_28px_60px_-12px_rgba(124,58,237,0.85)]">
+            <div class="dot-pattern pointer-events-none absolute inset-0 opacity-20"></div>
+            <div class="pointer-events-none absolute -right-10 -top-10 h-44 w-44 rounded-full bg-white/15 blur-2xl"></div>
+            <span class="relative mb-5 grid h-16 w-16 place-items-center rounded-2xl bg-white/15 ring-1 ring-white/30 backdrop-blur"><svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span>
+            <span class="relative mb-2 inline-flex w-fit items-center gap-1 rounded-full bg-white px-3 py-1 text-xs font-extrabold text-violet">★ PREMIUM</span>
+            <h3 class="relative text-xl font-extrabold">기업 교육</h3>
+            <p class="relative mt-3 flex-1 leading-relaxed text-white/85">직원 이미지·서비스 역량 교육. 기업·기관 맞춤 커리큘럼.</p>
+            <a href="#contact" class="relative mt-6 inline-flex items-center gap-1.5 font-bold transition-transform group-hover:translate-x-1">견적 문의 <span aria-hidden>→</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 6. 무료 아카이브 ===== -->
+    <!-- TODO: 실제 아카이브 URL로 a href 교체 (현재 example) -->
+    <section id="archive" class="relative overflow-hidden bg-gradient-to-br from-violet to-violet-deep">
+      <div class="dot-pattern pointer-events-none absolute inset-0 opacity-30"></div>
+      <div class="relative section-pad">
+        <div class="mx-auto max-w-2xl text-center">
+          <span class="mb-3 inline-block rounded-full bg-white/15 px-4 py-1.5 text-sm font-bold text-accent">무료 콘텐츠</span>
+          <h2 class="h-section !text-white !leading-[1.45]">미용실에서도 알기 힘든<br /><span class="text-accent">생활 밀착형 헤어팁 19</span></h2>
+          <p class="mt-4 text-white/80">‘주는 사람’의 진심. 핵심 노하우를 무료로 미리 만나보세요.</p>
+        </div>
+        <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <a href="https://archive1-beta.example.com" target="_blank" rel="noopener noreferrer" class="group block overflow-hidden rounded-card bg-white shadow-card transition-all hover:-translate-y-1 hover:shadow-card-hover">
+            <div class="relative grid aspect-[4/3] place-items-center bg-gradient-to-br from-primary-soft to-primary/30"><span class="text-5xl font-black text-violet/30">No.01</span></div>
+            <div class="p-5"><p class="text-xs font-bold text-violet">TIP 01</p><p class="mt-1 font-bold leading-snug text-ink">얼굴형별 가르마 황금비율</p></div>
+          </a>
+          <a href="https://archive1-beta.example.com" target="_blank" rel="noopener noreferrer" class="group block overflow-hidden rounded-card bg-white shadow-card transition-all hover:-translate-y-1 hover:shadow-card-hover">
+            <div class="relative grid aspect-[4/3] place-items-center bg-gradient-to-br from-primary-soft to-primary/30"><span class="text-5xl font-black text-violet/30">No.03</span></div>
+            <div class="p-5"><p class="text-xs font-bold text-violet">TIP 03</p><p class="mt-1 font-bold leading-snug text-ink">다음 날 망치지 않는 드라이 순서</p></div>
+          </a>
+          <a href="https://archive1-beta.example.com" target="_blank" rel="noopener noreferrer" class="group block overflow-hidden rounded-card bg-white shadow-card transition-all hover:-translate-y-1 hover:shadow-card-hover">
+            <div class="relative grid aspect-[4/3] place-items-center bg-gradient-to-br from-primary-soft to-primary/30"><span class="text-5xl font-black text-violet/30">No.17</span></div>
+            <div class="p-5"><p class="text-xs font-bold text-violet">TIP 17</p><p class="mt-1 font-bold leading-snug text-ink">면접·발표용 5분 정리 헤어</p></div>
+          </a>
+          <a href="https://archive1-beta.example.com" target="_blank" rel="noopener noreferrer" class="group block overflow-hidden rounded-card bg-white shadow-card transition-all hover:-translate-y-1 hover:shadow-card-hover">
+            <div class="relative grid aspect-[4/3] place-items-center bg-gradient-to-br from-primary-soft to-primary/30"><span class="text-5xl font-black text-violet/30">No.19</span></div>
+            <div class="p-5"><p class="text-xs font-bold text-violet">TIP 19</p><p class="mt-1 font-bold leading-snug text-ink">집에서 미용실 결 만드는 법</p></div>
+          </a>
+        </div>
+        <div class="mt-10 text-center">
+          <a href="https://archive1-beta.example.com" target="_blank" rel="noopener noreferrer" class="btn-white text-base">전체 아카이브 보기</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 7. 후기 · 강연 ===== -->
+    <section id="testimonials" class="section-pad">
+      <div class="mx-auto max-w-2xl text-center">
+        <span class="eyebrow">후기 · 강연 현장</span>
+        <h2 class="h-section">결과로 <span class="squiggle">증명합니다</span></h2>
+      </div>
+
+      <!-- 후기 슬라이더 (가로 스냅) / TODO: 실제 후기로 교체 -->
+      <div class="no-scrollbar mt-12 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4">
+        <figure class="w-[300px] shrink-0 snap-start rounded-card border border-primary-soft bg-white p-7 shadow-card sm:w-[360px]">
+          <div class="mb-3 flex gap-0.5 text-violet">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <blockquote class="text-lg font-semibold leading-relaxed text-ink">“얼굴형에 맞는 기준을 처음 알았어요. 미용실 가서 더 이상 헤매지 않아요.”</blockquote>
+          <figcaption class="mt-5 flex items-center gap-3"><span class="grid h-10 w-10 place-items-center rounded-full bg-primary-soft font-bold text-violet">김</span><span><span class="block font-bold text-ink">김○○</span><span class="block text-sm text-ink-soft">1:1 컨설팅</span></span></figcaption>
+        </figure>
+        <figure class="w-[300px] shrink-0 snap-start rounded-card border border-primary-soft bg-white p-7 shadow-card sm:w-[360px]">
+          <div class="mb-3 flex gap-0.5 text-violet">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <blockquote class="text-lg font-semibold leading-relaxed text-ink">“집에서 따라 했는데 진짜 미용실 결이 나와서 놀랐습니다. 강추!”</blockquote>
+          <figcaption class="mt-5 flex items-center gap-3"><span class="grid h-10 w-10 place-items-center rounded-full bg-primary-soft font-bold text-violet">이</span><span><span class="block font-bold text-ink">이○○</span><span class="block text-sm text-ink-soft">VOD 수강</span></span></figcaption>
+        </figure>
+        <figure class="w-[300px] shrink-0 snap-start rounded-card border border-primary-soft bg-white p-7 shadow-card sm:w-[360px]">
+          <div class="mb-3 flex gap-0.5 text-violet">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <blockquote class="text-lg font-semibold leading-relaxed text-ink">“직원 만족도가 눈에 띄게 올랐습니다. 현장감 있는 강의였어요.”</blockquote>
+          <figcaption class="mt-5 flex items-center gap-3"><span class="grid h-10 w-10 place-items-center rounded-full bg-primary-soft font-bold text-violet">○</span><span><span class="block font-bold text-ink">○○기업 인사팀</span><span class="block text-sm text-ink-soft">기업 교육</span></span></figcaption>
+        </figure>
+        <figure class="w-[300px] shrink-0 snap-start rounded-card border border-primary-soft bg-white p-7 shadow-card sm:w-[360px]">
+          <div class="mb-3 flex gap-0.5 text-violet">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <blockquote class="text-lg font-semibold leading-relaxed text-ink">“이미지메이킹 특강 이후 발표 자신감이 완전히 달라졌어요.”</blockquote>
+          <figcaption class="mt-5 flex items-center gap-3"><span class="grid h-10 w-10 place-items-center rounded-full bg-primary-soft font-bold text-violet">박</span><span><span class="block font-bold text-ink">박○○</span><span class="block text-sm text-ink-soft">외부 강연</span></span></figcaption>
+        </figure>
+      </div>
+
+      <!-- 강연 사진 갤러리 / TODO: 실제 사진으로 교체 -->
+      <div class="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3">
+        <div class="grid aspect-[4/3] place-items-center overflow-hidden rounded-2xl bg-gradient-to-br from-primary-soft to-primary/30 text-sm font-semibold text-violet/40">강연 사진 1</div>
+        <div class="grid aspect-[4/3] place-items-center overflow-hidden rounded-2xl bg-gradient-to-br from-primary-soft to-primary/30 text-sm font-semibold text-violet/40">강연 사진 2</div>
+        <div class="grid aspect-[4/3] place-items-center overflow-hidden rounded-2xl bg-gradient-to-br from-primary-soft to-primary/30 text-sm font-semibold text-violet/40">강연 사진 3</div>
+        <div class="grid aspect-[4/3] place-items-center overflow-hidden rounded-2xl bg-gradient-to-br from-primary-soft to-primary/30 text-sm font-semibold text-violet/40">강연 사진 4</div>
+        <div class="grid aspect-[4/3] place-items-center overflow-hidden rounded-2xl bg-gradient-to-br from-primary-soft to-primary/30 text-sm font-semibold text-violet/40">강연 사진 5</div>
+        <div class="grid aspect-[4/3] place-items-center overflow-hidden rounded-2xl bg-gradient-to-br from-primary-soft to-primary/30 text-sm font-semibold text-violet/40">강연 사진 6</div>
+      </div>
+    </section>
+
+    <!-- ===== 8. 미디어 & 저서 ===== -->
+    <section class="bg-lavender">
+      <div class="section-pad grid items-center gap-12 lg:grid-cols-2">
+        <div>
+          <span class="eyebrow">저서 · 미디어</span>
+          <h2 class="h-section">글로도 증명된 <span class="text-violet">전문성</span></h2>
+          <div class="mt-8 flex gap-6">
+            <div class="aspect-[2/3] w-36 shrink-0 overflow-hidden rounded-xl bg-white shadow-card">
+              <img src="images/book.png" alt="저서 『행복한 성공수업』 표지" class="h-full w-full object-cover" />
+            </div>
+            <div class="flex flex-col justify-center">
+              <p class="text-xl font-extrabold text-ink">『행복한 성공수업』</p>
+              <p class="mt-2 leading-relaxed text-ink-soft">이미지가 곧 경쟁력인 시대, 누구나 적용할 수 있는 실전 이미지 전략을 담았습니다.</p>
+              <!-- TODO: 실제 구매 링크로 교체 -->
+              <a href="https://product.kyobobook.co.kr/" target="_blank" rel="noopener noreferrer" class="btn-primary mt-5 w-fit !px-6 !py-3 text-sm">구매하러 가기</a>
+            </div>
+          </div>
+        </div>
+        <div>
+          <!-- TODO: 유튜브 영상 ID 교체 (현재 예시) -->
+          <div class="aspect-video overflow-hidden rounded-card bg-black shadow-card">
+            <iframe class="h-full w-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="민경이즘 대표 영상" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <p class="mt-4 text-center text-sm text-ink-soft">유튜브 채널에서 더 많은 헤어·이미지 콘텐츠를 만나보세요.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 9. 무료자료 DB 수집 (스티비) ===== -->
+    <section id="lead" class="relative overflow-hidden bg-white">
+      <svg aria-hidden="true" viewBox="0 0 220 120" fill="none" class="pointer-events-none absolute right-6 top-10 hidden h-24 w-40 opacity-90 lg:block">
+        <path d="M10 20c30 0 40 80 70 80s30-70 60-70 40 60 70 40" stroke="#3ee6a0" stroke-width="7" stroke-linecap="round" />
+      </svg>
+      <div class="section-pad">
+        <div class="mx-auto grid max-w-5xl items-center gap-10 rounded-[2rem] border border-primary-soft bg-lavender p-7 shadow-card md:grid-cols-2 md:p-12">
+          <div>
+            <span class="mb-3 inline-block rounded-full bg-accent/15 px-4 py-1.5 text-sm font-bold text-emerald-600">무료 자료 신청</span>
+            <h2 class="text-2xl font-extrabold leading-snug text-ink sm:text-3xl">
+              이름과 이메일만 남기면,<br />
+              <span class="text-violet">「미용실에서도 알기 힘든 생활 밀착형 헤어 관리팁 19」</span>를 <span class="squiggle">무료로</span> 보내드립니다
+            </h2>
+            <ul class="mt-7 space-y-3">
+              <li class="flex items-start gap-3"><span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-gradient-to-br from-primary to-violet text-white"><svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="font-medium text-ink">내 얼굴형 자가진단법 — 거울 하나로 끝</span></li>
+              <li class="flex items-start gap-3"><span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-gradient-to-br from-primary to-violet text-white"><svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="font-medium text-ink">피해야 할 스타일 vs 어울리는 스타일 정리</span></li>
+              <li class="flex items-start gap-3"><span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-gradient-to-br from-primary to-violet text-white"><svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="font-medium text-ink">일상에서 헤어 실수를 줄이는 3가지 습관</span></li>
+            </ul>
+            <p class="mt-7 text-sm text-ink-soft">스팸 없이, 진짜 도움 되는 자료만 보냅니다. 언제든 구독 해지 가능.</p>
+          </div>
+
+          <div>
+            <!--
+              ┌─────────────────────────────────────────────────────────────┐
+              │ 스티비(stibee) 연동 — 방식 A (iframe 임베드)                  │
+              │ 1) 스티비 → 구독폼 만들기 → 이름/이메일/동의 체크박스 구성     │
+              │ 2) 발급된 임베드 코드(iframe)를 아래 점선 박스 전체와 교체     │
+              │ 3) 구독 즉시 '자동 이메일(웰컴)'에 무료자료 다운로드 링크 첨부 │
+              └─────────────────────────────────────────────────────────────┘
+            -->
+            <div class="rounded-card bg-white p-2 shadow-card">
+              <!-- TODO: 아래 점선 div 전체를 스티비 iframe 임베드 코드로 교체 -->
+              <div class="rounded-2xl border-2 border-dashed border-violet/40 p-6">
+                <p class="mb-4 text-center text-sm font-bold text-violet">스티비 구독폼 임베드 자리</p>
+                <form class="space-y-3" onsubmit="return false;" aria-label="무료자료 신청 (데모)">
+                  <input type="text" placeholder="이름" class="w-full rounded-[14px] border border-primary-soft px-4 py-3 outline-none focus:border-violet" />
+                  <input type="email" placeholder="이메일" class="w-full rounded-[14px] border border-primary-soft px-4 py-3 outline-none focus:border-violet" />
+                  <label class="flex items-start gap-2 text-sm text-ink-soft">
+                    <input type="checkbox" class="mt-1 accent-violet" required />
+                    <span>개인정보 수집·이용에 동의합니다. (필수)</span>
+                  </label>
+                  <button type="submit" class="btn-primary w-full">무료 자료 받기</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 10. FAQ ===== -->
+    <section id="faq" class="section-pad">
+      <div class="mx-auto max-w-2xl text-center">
+        <span class="eyebrow">자주 묻는 질문</span>
+        <h2 class="h-section">궁금한 점, <span class="squiggle">여기 있어요</span></h2>
+      </div>
+      <div class="mx-auto mt-12 max-w-3xl space-y-3">
+        <div class="faq-item overflow-hidden rounded-2xl border border-primary-soft bg-white">
+          <button type="button" class="faq-btn flex w-full items-center justify-between gap-4 px-6 py-5 text-left">
+            <span class="font-bold text-ink">1:1 컨설팅은 어떻게 진행되나요? (시간·장소·비용)</span>
+            <span class="faq-icon grid h-7 w-7 shrink-0 place-items-center rounded-full bg-primary-soft text-violet transition-transform">+</span>
+          </button>
+          <div class="faq-panel"><div><p class="px-6 pb-5 leading-relaxed text-ink-soft">사전 진단 후 오프라인 또는 온라인으로 진행됩니다. 진행 시간과 비용은 컨설팅 종류에 따라 안내드리며, 문의 주시면 상세히 답변드립니다.</p></div></div>
+        </div>
+        <div class="faq-item overflow-hidden rounded-2xl border border-primary-soft bg-white">
+          <button type="button" class="faq-btn flex w-full items-center justify-between gap-4 px-6 py-5 text-left">
+            <span class="font-bold text-ink">기업 강연 견적은 어떻게 받나요?</span>
+            <span class="faq-icon grid h-7 w-7 shrink-0 place-items-center rounded-full bg-primary-soft text-violet transition-transform">+</span>
+          </button>
+          <div class="faq-panel"><div><p class="px-6 pb-5 leading-relaxed text-ink-soft">강연 주제·인원·일정을 문의 폼이나 카카오 채널로 보내주시면 맞춤 견적을 보내드립니다.</p></div></div>
+        </div>
+        <div class="faq-item overflow-hidden rounded-2xl border border-primary-soft bg-white">
+          <button type="button" class="faq-btn flex w-full items-center justify-between gap-4 px-6 py-5 text-left">
+            <span class="font-bold text-ink">VOD는 결제 후 언제까지 볼 수 있나요?</span>
+            <span class="faq-icon grid h-7 w-7 shrink-0 place-items-center rounded-full bg-primary-soft text-violet transition-transform">+</span>
+          </button>
+          <!-- TODO: 실제 정책 확정 -->
+          <div class="faq-panel"><div><p class="px-6 pb-5 leading-relaxed text-ink-soft">결제 후 일정 기간 무제한 시청이 가능합니다. (구체적 기간은 상품 페이지 안내 참고)</p></div></div>
+        </div>
+        <div class="faq-item overflow-hidden rounded-2xl border border-primary-soft bg-white">
+          <button type="button" class="faq-btn flex w-full items-center justify-between gap-4 px-6 py-5 text-left">
+            <span class="font-bold text-ink">지방·온라인 강연도 가능한가요?</span>
+            <span class="faq-icon grid h-7 w-7 shrink-0 place-items-center rounded-full bg-primary-soft text-violet transition-transform">+</span>
+          </button>
+          <div class="faq-panel"><div><p class="px-6 pb-5 leading-relaxed text-ink-soft">네, 전국 출강과 온라인(실시간/녹화) 강연 모두 가능합니다.</p></div></div>
+        </div>
+        <div class="faq-item overflow-hidden rounded-2xl border border-primary-soft bg-white">
+          <button type="button" class="faq-btn flex w-full items-center justify-between gap-4 px-6 py-5 text-left">
+            <span class="font-bold text-ink">무료자료는 어떤 내용인가요?</span>
+            <span class="faq-icon grid h-7 w-7 shrink-0 place-items-center rounded-full bg-primary-soft text-violet transition-transform">+</span>
+          </button>
+          <div class="faq-panel"><div><p class="px-6 pb-5 leading-relaxed text-ink-soft">얼굴형별 헤어 가이드 정리본으로, 자가진단법과 어울리는 스타일 가이드를 담았습니다. 이름·이메일만 남기면 바로 받아보실 수 있습니다.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 11. 최종 CTA ===== -->
+    <!-- TODO: 실제 네이버폼 / 카카오 오픈채팅 링크로 교체 -->
+    <section id="contact" class="relative overflow-hidden bg-gradient-to-br from-violet to-violet-deep">
+      <div class="dot-pattern pointer-events-none absolute inset-0 opacity-30"></div>
+      <div class="relative mx-auto max-w-4xl px-5 py-24 text-center sm:px-6">
+        <h2 class="text-3xl font-extrabold leading-tight text-white sm:text-4xl">당신의 인상은 바뀔 수 있습니다.<br />지금 시작하세요.</h2>
+        <p class="mt-5 text-lg text-white/85">어떤 문의든 편하게 남겨주세요. 가장 빠른 길을 안내해 드립니다.</p>
+        <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <a href="https://naver.me/form-1on1" target="_blank" rel="noopener noreferrer" class="btn-white text-base">1:1 컨설팅 문의</a>
+          <a href="https://naver.me/form-biz" target="_blank" rel="noopener noreferrer" class="btn-white text-base">기업교육 · 강연 문의</a>
+          <a href="https://open.kakao.com/o/your-channel" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 rounded-full bg-[#FEE500] px-7 py-3.5 font-bold text-[#3c1e1e] shadow-md transition-transform hover:-translate-y-0.5">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.48 3 2 6.58 2 11c0 2.83 1.87 5.31 4.69 6.71-.21.76-.76 2.77-.87 3.2-.14.53.19.52.4.38.17-.11 2.65-1.8 3.72-2.53.66.09 1.35.14 2.06.14 5.52 0 10-3.58 10-8s-4.48-8-10-8z"/></svg>
+            카카오 오픈채팅 상담
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== 12. Footer ===== -->
+  <footer class="bg-ink pb-20 text-white md:pb-0">
+    <div class="mx-auto grid max-w-6xl gap-10 px-5 py-16 sm:px-6 md:grid-cols-4">
+      <div class="md:col-span-2">
+        <div class="flex items-center gap-2">
+          <span class="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-primary to-violet text-lg font-black text-white">민</span>
+          <span class="text-xl font-extrabold">민경이즘</span>
+        </div>
+        <p class="mt-4 max-w-sm leading-relaxed text-white/60">헤어디렉터 · 이미지컨설턴트 · 건국대 겸임교수.<br />첫인상을 바꾸는 헤어 × 이미지메이킹.</p>
+      </div>
+      <div>
+        <h4 class="mb-4 font-bold text-white/90">문의</h4>
+        <ul class="space-y-2 text-white/60">
+          <li><a href="#contact" class="hover:text-primary">기업교육 · 강연</a></li>
+          <li><a href="#contact" class="hover:text-primary">1:1 컨설팅</a></li>
+          <li><a href="#contact" class="hover:text-primary">카카오 오픈채팅</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="mb-4 font-bold text-white/90">채널</h4>
+        <!-- TODO: 실제 링크로 교체 -->
+        <ul class="space-y-2 text-white/60">
+          <li><a href="#" class="hover:text-primary">인스타그램</a></li>
+          <li><a href="#" class="hover:text-primary">유튜브</a></li>
+          <li><a href="#" class="hover:text-primary">블로그</a></li>
+          <li><a href="#" class="hover:text-primary">교보문고 (저서)</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-white/10">
+      <div class="mx-auto flex max-w-6xl flex-col gap-2 px-5 py-6 text-sm text-white/40 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+        <p>© 2026 민경이즘 (MIN BEAUTY HAIR). All rights reserved.</p>
+        <!-- TODO: 사업자 정보 기입 -->
+        <p>대표 ○○○ · 사업자등록번호 000-00-00000</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== 전역 플로팅 ===== -->
+  <!-- TODO: 실제 카카오 오픈채팅 링크로 교체 -->
+  <a href="https://open.kakao.com/o/your-channel" target="_blank" rel="noopener noreferrer" aria-label="카카오 오픈채팅 상담" class="fixed bottom-24 right-4 z-40 grid h-14 w-14 place-items-center rounded-full bg-[#FEE500] shadow-lg transition-transform hover:-translate-y-1 md:bottom-6">
+    <svg class="h-7 w-7 text-[#3c1e1e]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.48 3 2 6.58 2 11c0 2.83 1.87 5.31 4.69 6.71-.21.76-.76 2.77-.87 3.2-.14.53.19.52.4.38.17-.11 2.65-1.8 3.72-2.53.66.09 1.35.14 2.06.14 5.52 0 10-3.58 10-8s-4.48-8-10-8z"/></svg>
+  </a>
+
+  <div class="fixed inset-x-0 bottom-0 z-40 flex gap-2 border-t border-primary-soft bg-white/95 p-3 backdrop-blur md:hidden">
+    <a href="#lead" class="btn-primary flex-1 !py-3 text-sm">무료자료 받기</a>
+    <a href="#contact" class="btn-outline flex-1 !py-3 text-sm">상담 문의</a>
+  </div>
+
+  <!-- ===== 스크립트 ===== -->
+  <script>
+    var header = document.getElementById("site-header");
+    function onScroll() {
+      if (window.scrollY > 8) {
+        header.classList.add("shadow-[0_4px_24px_-12px_rgba(124,58,237,0.25)]", "bg-white/90");
+        header.classList.remove("bg-white/70");
+      } else {
+        header.classList.remove("shadow-[0_4px_24px_-12px_rgba(124,58,237,0.25)]", "bg-white/90");
+        header.classList.add("bg-white/70");
+      }
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+
+    var menuBtn = document.getElementById("menu-btn");
+    var mobileMenu = document.getElementById("mobile-menu");
+    var bars = document.querySelectorAll(".menu-bar");
+    function toggleMenu(force) {
+      var willOpen = force !== undefined ? force : mobileMenu.classList.contains("hidden");
+      mobileMenu.classList.toggle("hidden", !willOpen);
+      bars[0].classList.toggle("translate-y-[7px]", willOpen);
+      bars[0].classList.toggle("rotate-45", willOpen);
+      bars[1].classList.toggle("opacity-0", willOpen);
+      bars[2].classList.toggle("-translate-y-[7px]", willOpen);
+      bars[2].classList.toggle("-rotate-45", willOpen);
+    }
+    menuBtn.addEventListener("click", function () { toggleMenu(); });
+    document.querySelectorAll(".m-link").forEach(function (a) {
+      a.addEventListener("click", function () { toggleMenu(false); });
+    });
+
+    function animateCount(el) {
+      var target = parseInt(el.getAttribute("data-count"), 10);
+      var duration = 1400, startTime = null;
+      function step(t) {
+        if (!startTime) startTime = t;
+        var p = Math.min((t - startTime) / duration, 1);
+        var eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(target * eased).toLocaleString();
+        if (p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+    var countEls = document.querySelectorAll("[data-count]");
+    if ("IntersectionObserver" in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { animateCount(e.target); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.4 });
+      countEls.forEach(function (el) { io.observe(el); });
+    } else {
+      countEls.forEach(animateCount);
+    }
+
+    document.querySelectorAll(".faq-btn").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        btn.closest(".faq-item").classList.toggle("open");
+      });
+    });
+  </script>
+</body>
+</html>
