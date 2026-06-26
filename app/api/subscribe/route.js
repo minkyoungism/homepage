@@ -9,7 +9,7 @@ export async function POST(request) {
     const res = await fetch("https://stibee.com/api/v1.0/lists/480490/subscribers", {
       method: "POST",
       headers: {
-        AccessToken: process.env.STIBEE_API_KEY,
+        AccessToken: process.env.STIBEE_TOKEN,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
