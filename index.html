@@ -188,17 +188,22 @@
 
           <div>
             <div class="rounded-card bg-white p-2 shadow-card">
-              <div class="rounded-2xl border-2 border-dashed border-violet/40 p-6">
-                <p class="mb-4 text-center text-sm font-bold text-violet">스티비 구독폼 임베드 자리</p>
-                <form class="space-y-3" onsubmit="return false;" aria-label="무료자료 신청 (데모)">
-                  <input type="text" placeholder="이름" class="w-full rounded-[14px] border border-primary-soft px-4 py-3 outline-none focus:border-violet" />
-                  <input type="email" placeholder="이메일" class="w-full rounded-[14px] border border-primary-soft px-4 py-3 outline-none focus:border-violet" />
+              <div class="rounded-2xl p-6" id="lead-form-wrap">
+                <form id="lead-form" class="space-y-3">
+                  <input type="text" id="lead-name" placeholder="이름" required class="w-full rounded-[14px] border border-primary-soft px-4 py-3 outline-none focus:border-violet" />
+                  <input type="email" id="lead-email" placeholder="이메일" required class="w-full rounded-[14px] border border-primary-soft px-4 py-3 outline-none focus:border-violet" />
                   <label class="flex items-start gap-2 text-sm text-ink-soft">
-                    <input type="checkbox" class="mt-1 accent-violet" required />
+                    <input type="checkbox" id="lead-agree" class="mt-1 accent-violet" required />
                     <span>개인정보 수집·이용에 동의합니다. (필수)</span>
                   </label>
-                  <button type="submit" class="btn-primary w-full">무료 자료 받기</button>
+                  <p id="lead-error" class="hidden text-sm text-red-500">오류가 발생했습니다. 다시 시도해주세요.</p>
+                  <button type="submit" id="lead-btn" class="btn-primary w-full">무료 자료 받기</button>
                 </form>
+                <div id="lead-success" class="hidden flex-col items-center gap-4 py-8 text-center">
+                  <span class="grid h-14 w-14 place-items-center rounded-full bg-gradient-to-br from-primary to-violet text-2xl text-white">✓</span>
+                  <p class="text-xl font-extrabold text-ink">신청이 완료됐어요!</p>
+                  <p class="text-ink-soft">입력하신 이메일로 헤어 가이드를 보내드렸습니다.<br />스팸함도 확인해주세요.</p>
+                </div>
               </div>
             </div>
           </div>
@@ -758,6 +763,41 @@
         btn.closest(".faq-item").classList.toggle("open");
       });
     });
+
+    // 스티비 구독폼 연동
+    var leadForm = document.getElementById("lead-form");
+    if (leadForm) {
+      leadForm.addEventListener("submit", async function (e) {
+        e.preventDefault();
+        var btn = document.getElementById("lead-btn");
+        var errEl = document.getElementById("lead-error");
+        var name = document.getElementById("lead-name").value;
+        var email = document.getElementById("lead-email").value;
+        btn.textContent = "신청 중...";
+        btn.disabled = true;
+        errEl.classList.add("hidden");
+        try {
+          var body = new URLSearchParams({ email: email, name: name });
+          var res = await fetch("https://stibee.com/api/v1.0/lists/sFljpfdg51WOJ5sAlYx5SAIMTngR_w==/public/subscribers", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: body.toString()
+          });
+          if (res.ok) {
+            document.getElementById("lead-form").classList.add("hidden");
+            var s = document.getElementById("lead-success");
+            s.classList.remove("hidden");
+            s.classList.add("flex");
+          } else {
+            throw new Error("error");
+          }
+        } catch (_) {
+          errEl.classList.remove("hidden");
+          btn.textContent = "무료 자료 받기";
+          btn.disabled = false;
+        }
+      });
+    }
   </script>
 </body>
 </html>
