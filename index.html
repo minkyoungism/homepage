@@ -165,7 +165,48 @@
   </header>
 
   <main>
-    <!-- ===== 1. Hero ===== -->
+    <!-- ===== 1. 무료자료 DB 수집 (스티비) ===== -->
+    <section id="lead" class="relative overflow-hidden bg-white" style="padding-top:72px">
+      <svg aria-hidden="true" viewBox="0 0 220 120" fill="none" class="pointer-events-none absolute right-6 top-10 hidden h-24 w-40 opacity-90 lg:block">
+        <path d="M10 20c30 0 40 80 70 80s30-70 60-70 40 60 70 40" stroke="#3ee6a0" stroke-width="7" stroke-linecap="round" />
+      </svg>
+      <div class="section-pad">
+        <div class="mx-auto grid max-w-5xl items-center gap-10 rounded-[2rem] border border-primary-soft bg-lavender p-7 shadow-card md:grid-cols-2 md:p-12">
+          <div>
+            <span class="mb-3 inline-block rounded-full bg-accent/15 px-4 py-1.5 text-sm font-bold text-emerald-600">무료 자료 신청</span>
+            <h2 class="text-2xl font-extrabold leading-snug text-ink sm:text-3xl">
+              이름과 이메일만 남기면,<br />
+              <span class="text-violet">「미용실에서도 알기 힘든 생활 밀착형 헤어 관리팁 19」</span>를 <span class="squiggle">무료로</span> 보내드립니다
+            </h2>
+            <ul class="mt-7 space-y-3">
+              <li class="flex items-start gap-3"><span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-gradient-to-br from-primary to-violet text-white"><svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="font-medium text-ink">내 얼굴형 자가진단법 — 거울 하나로 끝</span></li>
+              <li class="flex items-start gap-3"><span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-gradient-to-br from-primary to-violet text-white"><svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="font-medium text-ink">피해야 할 스타일 vs 어울리는 스타일 정리</span></li>
+              <li class="flex items-start gap-3"><span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-gradient-to-br from-primary to-violet text-white"><svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="font-medium text-ink">일상에서 헤어 실수를 줄이는 3가지 습관</span></li>
+            </ul>
+            <p class="mt-7 text-sm text-ink-soft">스팸 없이, 진짜 도움 되는 자료만 보냅니다. 언제든 구독 해지 가능.</p>
+          </div>
+
+          <div>
+            <div class="rounded-card bg-white p-2 shadow-card">
+              <div class="rounded-2xl border-2 border-dashed border-violet/40 p-6">
+                <p class="mb-4 text-center text-sm font-bold text-violet">스티비 구독폼 임베드 자리</p>
+                <form class="space-y-3" onsubmit="return false;" aria-label="무료자료 신청 (데모)">
+                  <input type="text" placeholder="이름" class="w-full rounded-[14px] border border-primary-soft px-4 py-3 outline-none focus:border-violet" />
+                  <input type="email" placeholder="이메일" class="w-full rounded-[14px] border border-primary-soft px-4 py-3 outline-none focus:border-violet" />
+                  <label class="flex items-start gap-2 text-sm text-ink-soft">
+                    <input type="checkbox" class="mt-1 accent-violet" required />
+                    <span>개인정보 수집·이용에 동의합니다. (필수)</span>
+                  </label>
+                  <button type="submit" class="btn-primary w-full">무료 자료 받기</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 2. Hero ===== -->
     <section id="top" class="relative overflow-hidden bg-gradient-to-b from-primary-soft/50 via-white to-white pt-[72px]">
       <!-- 오로라 그라데이션 블롭 (떠다님) -->
       <div class="pointer-events-none absolute inset-0 overflow-hidden">
@@ -538,56 +579,6 @@
             <iframe class="h-full w-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="민경이즘 대표 영상" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
           <p class="mt-4 text-center text-sm text-ink-soft">유튜브 채널에서 더 많은 헤어·이미지 콘텐츠를 만나보세요.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== 9. 무료자료 DB 수집 (스티비) ===== -->
-    <section id="lead" class="relative overflow-hidden bg-white">
-      <svg aria-hidden="true" viewBox="0 0 220 120" fill="none" class="pointer-events-none absolute right-6 top-10 hidden h-24 w-40 opacity-90 lg:block">
-        <path d="M10 20c30 0 40 80 70 80s30-70 60-70 40 60 70 40" stroke="#3ee6a0" stroke-width="7" stroke-linecap="round" />
-      </svg>
-      <div class="section-pad">
-        <div class="mx-auto grid max-w-5xl items-center gap-10 rounded-[2rem] border border-primary-soft bg-lavender p-7 shadow-card md:grid-cols-2 md:p-12">
-          <div>
-            <span class="mb-3 inline-block rounded-full bg-accent/15 px-4 py-1.5 text-sm font-bold text-emerald-600">무료 자료 신청</span>
-            <h2 class="text-2xl font-extrabold leading-snug text-ink sm:text-3xl">
-              이름과 이메일만 남기면,<br />
-              <span class="text-violet">「미용실에서도 알기 힘든 생활 밀착형 헤어 관리팁 19」</span>를 <span class="squiggle">무료로</span> 보내드립니다
-            </h2>
-            <ul class="mt-7 space-y-3">
-              <li class="flex items-start gap-3"><span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-gradient-to-br from-primary to-violet text-white"><svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="font-medium text-ink">내 얼굴형 자가진단법 — 거울 하나로 끝</span></li>
-              <li class="flex items-start gap-3"><span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-gradient-to-br from-primary to-violet text-white"><svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="font-medium text-ink">피해야 할 스타일 vs 어울리는 스타일 정리</span></li>
-              <li class="flex items-start gap-3"><span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-gradient-to-br from-primary to-violet text-white"><svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="font-medium text-ink">일상에서 헤어 실수를 줄이는 3가지 습관</span></li>
-            </ul>
-            <p class="mt-7 text-sm text-ink-soft">스팸 없이, 진짜 도움 되는 자료만 보냅니다. 언제든 구독 해지 가능.</p>
-          </div>
-
-          <div>
-            <!--
-              ┌─────────────────────────────────────────────────────────────┐
-              │ 스티비(stibee) 연동 — 방식 A (iframe 임베드)                  │
-              │ 1) 스티비 → 구독폼 만들기 → 이름/이메일/동의 체크박스 구성     │
-              │ 2) 발급된 임베드 코드(iframe)를 아래 점선 박스 전체와 교체     │
-              │ 3) 구독 즉시 '자동 이메일(웰컴)'에 무료자료 다운로드 링크 첨부 │
-              └─────────────────────────────────────────────────────────────┘
-            -->
-            <div class="rounded-card bg-white p-2 shadow-card">
-              <!-- TODO: 아래 점선 div 전체를 스티비 iframe 임베드 코드로 교체 -->
-              <div class="rounded-2xl border-2 border-dashed border-violet/40 p-6">
-                <p class="mb-4 text-center text-sm font-bold text-violet">스티비 구독폼 임베드 자리</p>
-                <form class="space-y-3" onsubmit="return false;" aria-label="무료자료 신청 (데모)">
-                  <input type="text" placeholder="이름" class="w-full rounded-[14px] border border-primary-soft px-4 py-3 outline-none focus:border-violet" />
-                  <input type="email" placeholder="이메일" class="w-full rounded-[14px] border border-primary-soft px-4 py-3 outline-none focus:border-violet" />
-                  <label class="flex items-start gap-2 text-sm text-ink-soft">
-                    <input type="checkbox" class="mt-1 accent-violet" required />
-                    <span>개인정보 수집·이용에 동의합니다. (필수)</span>
-                  </label>
-                  <button type="submit" class="btn-primary w-full">무료 자료 받기</button>
-                </form>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
