@@ -1,8 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import Squiggle from "./Squiggle";
 
-// 무료자료 DB 수집 — 1차 전환 목표 섹션
 const BENEFITS = [
   "내 얼굴형 자가진단법 — 거울 하나로 끝",
   "피해야 할 스타일 vs 어울리는 스타일 정리",
@@ -10,6 +10,26 @@ const BENEFITS = [
 ];
 
 export default function LeadForm() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [agree, setAgree] = useState(false);
+  const [status, setStatus] = useState("idle"); // idle | loading | success | error
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus("loading");
+    try {
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email }),
+      });
+      setStatus(res.ok ? "success" : "error");
+    } catch {
+      setStatus("error");
+    }
+  };
+
   return (
     <section id="lead" className="relative overflow-hidden bg-white">
       <Squiggle className="absolute right-6 top-10 hidden h-24 w-40 opacity-90 lg:block" />
@@ -41,54 +61,63 @@ export default function LeadForm() {
             </p>
           </div>
 
-          {/* 우: 스티비 임베드 자리 */}
-          <div>
-            {/*
-              ┌─────────────────────────────────────────────────────────────┐
-              │ 스티비(stibee) 연동 — 방식 A (iframe 임베드)                  │
-              │ 1) 스티비 → 구독폼 만들기 → 이름/이메일/동의 체크박스 구성     │
-              │ 2) 발급된 임베드 코드(iframe)를 아래 placeholder 자리에 교체   │
-              │ 3) 구독 즉시 '자동 이메일(웰컴)'에 무료자료 다운로드 링크 첨부 │
-              │    → 홈페이지가 아니라 스티비가 자료를 발송함                  │
-              │                                                               │
-              │ 예시:                                                         │
-              │ <iframe src="https://stibee.com/api/v1.0/lists/XXXX/..." ... />│
-              └─────────────────────────────────────────────────────────────┘
-            */}
-            <div className="rounded-card bg-white p-2 shadow-card">
-              {/* TODO: 아래 div 전체를 스티비 iframe 임베드 코드로 교체 */}
-              <div className="rounded-2xl border-2 border-dashed border-primary/40 p-6">
-                <p className="mb-4 text-center text-sm font-bold text-primary-deep">
-                  스티비 구독폼 임베드 자리
-                </p>
-
-                {/* 디자인 참고용 더미 폼 (스티비 임베드로 교체 시 삭제) */}
-                <form
-                  className="space-y-3"
-                  onSubmit={(e) => e.preventDefault()}
-                  aria-label="무료자료 신청 (데모)"
-                >
+          {/* 우: 폼 */}
+          <div className="rounded-card bg-white p-2 shadow-card">
+            <div className="rounded-2xl p-6">
+              {status === "success" ? (
+                <div className="flex flex-col items-center gap-4 py-8 text-center">
+                  <span className="grid h-14 w-14 place-items-center rounded-full bg-primary text-2xl text-white">
+                    ✓
+                  </span>
+                  <p className="text-xl font-extrabold text-ink">신청이 완료됐어요!</p>
+                  <p className="text-ink-soft">
+                    입력하신 이메일로 헤어 가이드를 보내드렸습니다.
+                    <br />
+                    스팸함도 확인해주세요.
+                  </p>
+                </div>
+              ) : (
+                <form className="space-y-3" onSubmit={handleSubmit}>
                   <input
                     type="text"
                     placeholder="이름"
+                    required
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                     className="w-full rounded-[14px] border border-primary-soft px-4 py-3 outline-none focus:border-primary"
                   />
                   <input
                     type="email"
                     placeholder="이메일"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     className="w-full rounded-[14px] border border-primary-soft px-4 py-3 outline-none focus:border-primary"
                   />
                   <label className="flex items-start gap-2 text-sm text-ink-soft">
-                    <input type="checkbox" className="mt-1 accent-primary" required />
-                    <span>
-                      개인정보 수집·이용에 동의합니다. (필수)
-                    </span>
+                    <input
+                      type="checkbox"
+                      className="mt-1 accent-primary"
+                      required
+                      checked={agree}
+                      onChange={(e) => setAgree(e.target.checked)}
+                    />
+                    <span>개인정보 수집·이용에 동의합니다. (필수)</span>
                   </label>
-                  <button type="submit" className="btn-primary w-full">
-                    무료 자료 받기
+                  {status === "error" && (
+                    <p className="text-sm text-red-500">
+                      오류가 발생했습니다. 다시 시도해주세요.
+                    </p>
+                  )}
+                  <button
+                    type="submit"
+                    disabled={status === "loading"}
+                    className="btn-primary w-full disabled:opacity-60"
+                  >
+                    {status === "loading" ? "신청 중..." : "무료 자료 받기"}
                   </button>
                 </form>
-              </div>
+              )}
             </div>
           </div>
         </div>
