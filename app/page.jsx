@@ -18,6 +18,7 @@ export default function Home() {
     <>
       <Header />
       <main>
+        <LeadForm />
         <Hero />
         <TrustBar />
         <Problem />
@@ -26,7 +27,6 @@ export default function Home() {
         <Archive />
         <Testimonials />
         <Media />
-        <LeadForm />
         <Faq />
         <FinalCta />
       </main>
