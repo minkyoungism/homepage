@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>평생 도움되는 헤어관리 팁 19선</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: #f4f1ee;
+      font-family: 'Noto Sans KR', -apple-system, sans-serif;
+      color: #1a1a1a;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .wrapper {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #ffffff;
+    }
+
+    /* ── 헤더 ── */
+    .header {
+      background: #7C6FF7;
+      text-align: center;
+      padding: 48px 32px 40px;
+    }
+    .header-badge {
+      display: inline-block;
+      background: #C8F135;
+      color: #111;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      padding: 5px 14px;
+      border-radius: 999px;
+      margin-bottom: 20px;
+    }
+    .header-gift {
+      font-size: 52px;
+      margin-bottom: 16px;
+      line-height: 1;
+    }
+    .header-title {
+      font-size: 26px;
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1.35;
+      letter-spacing: -0.02em;
+    }
+    .header-title span {
+      color: #C8F135;
+    }
+    .header-sub {
+      margin-top: 12px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.75);
+      font-weight: 400;
+      line-height: 1.7;
+    }
+
+    /* ── 인트로 ── */
+    .intro {
+      padding: 40px 40px 32px;
+      background: #fff;
+      border-bottom: 1px solid #f0ece6;
+    }
+    .intro-greeting {
+      font-size: 16px;
+      font-weight: 700;
+      color: #7C6FF7;
+      margin-bottom: 12px;
+    }
+    .intro p {
+      font-size: 15px;
+      color: #333;
+      line-height: 1.85;
+    }
+    .intro-name {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #888;
+    }
+    .intro-name strong {
+      color: #1a1a1a;
+      font-weight: 700;
+    }
+
+    /* ── 카드 섹션 ── */
+    .purple-section {
+      background: #5B21D9;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
+      background-size: 20px 20px;
+      padding: 48px 28px 44px;
+      text-align: center;
+    }
+    .purple-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      padding: 5px 16px;
+      border-radius: 999px;
+      margin-bottom: 22px;
+      border: 1px solid rgba(255,255,255,0.25);
+    }
+    .purple-title {
+      font-size: 22px;
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1.35;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+    .purple-title .green {
+      color: #C8F135;
+    }
+    .purple-sub {
+      font-size: 13px;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .tip-card {
+      background: rgba(255,255,255,0.12);
+      border-radius: 16px;
+      padding: 20px 16px 18px;
+      text-align: left;
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+    .tip-card-num {
+      font-size: 28px;
+      font-weight: 900;
+      color: #C8F135;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+      opacity: 0.7;
+    }
+    .tip-card-label {
+      font-size: 10px;
+      font-weight: 700;
+      color: #C8F135;
+      letter-spacing: 0.08em;
+      margin-bottom: 5px;
+    }
+    .tip-card-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.5;
+    }
+    .archive-btn {
+      display: inline-block;
+      background: #ffffff;
+      color: #5B21D9 !important;
+      font-size: 14px;
+      font-weight: 800;
+      padding: 14px 36px;
+      border-radius: 999px;
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+
+    /* ── 민경 소개 ── */
+    .about {
+      padding: 36px 40px;
+      background: #fff;
+      border-top: 1px solid #f0ece6;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .about-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: #e8e4f8;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+    }
+    .about-text h3 {
+      font-size: 15px;
+      font-weight: 900;
+      color: #111;
+    }
+    .about-text p {
+      font-size: 13px;
+      color: #777;
+      margin-top: 4px;
+      line-height: 1.6;
+    }
+
+    /* ── 푸터 ── */
+    .footer {
+      background: #1a1a1a;
+      padding: 32px 40px;
+      text-align: center;
+    }
+    .footer-logo {
+      font-size: 16px;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+    }
+    .footer-links {
+      margin-bottom: 16px;
+    }
+    .footer-links a {
+      color: #aaa;
+      font-size: 12px;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+    .footer-text {
+      font-size: 11px;
+      color: #555;
+      line-height: 1.7;
+    }
+    .footer-unsub {
+      margin-top: 10px;
+      font-size: 11px;
+    }
+    .footer-unsub a {
+      color: #666;
+    }
+
+    @media (max-width: 600px) {
+      .intro, .section-label, .tip-list, .cta-section, .about, .footer {
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+      .header {
+        padding: 36px 24px 32px;
+      }
+      .header-title {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+
+    <!-- 헤더 -->
+    <div class="header">
+      <div class="header-badge">✦ 민경이즘 웰컴 선물</div>
+      <div class="header-gift">🎁</div>
+      <div class="header-title">
+        평생 도움되는<br />
+        <span>헤어관리 팁 19선</span>이<br />
+        도착했어요!
+      </div>
+      <div class="header-sub">
+        신청해주셔서 감사해요 :)<br />
+        바로 아래에서 19가지 자료를 확인하실 수 있어요.
+      </div>
+    </div>
+
+    <!-- 인트로 -->
+    <div class="intro">
+      <div class="intro-greeting">안녕하세요!</div>
+      <p>
+        신청해주셔서 진심으로 감사드려요.<br /><br />
+        저는 25년 경력의 헤어 디렉터 민경이에요.<br />
+        수많은 고객을 만나면서 가장 많이 받은 질문들,<br />
+        그리고 사람들이 모르고 반복하는 헤어 실수들을<br />
+        19가지 핵심 자료로 정리했어요.<br /><br />
+        지금 바로 아래에서 확인해보세요!
+      </p>
+      <div class="intro-name">— <strong>민경 드림</strong> ✉️</div>
+    </div>
+
+    <!-- 카드 섹션 -->
+    <div class="purple-section">
+      <div class="purple-badge">무료 콘텐츠</div>
+      <div class="purple-title">
+        미용실에서도 알기 힘든<br />
+        <span class="green">생활 밀착형 헤어팁 19</span>
+      </div>
+      <div class="purple-sub">'주는 사람'의 진심. 핵심 노하우를 무료로 미리 만나보세요.</div>
+
+      <div class="card-grid">
+        <div class="tip-card">
+          <div class="tip-card-num">No.01</div>
+          <div class="tip-card-label">TIP 01</div>
+          <div class="tip-card-title">얼굴 유형별 최상의 헤어스타일</div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-card-num">No.05</div>
+          <div class="tip-card-label">TIP 05</div>
+          <div class="tip-card-title">샴푸할 때 가장 많이 하는 실수</div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-card-num">No.16</div>
+          <div class="tip-card-label">TIP 16</div>
+          <div class="tip-card-title">얼굴형별 헤어 가이드 정리본</div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-card-num">No.19</div>
+          <div class="tip-card-label">TIP 19</div>
+          <div class="tip-card-title">단발 실패하는 진짜 이유</div>
+        </div>
+      </div>
+
+      <a href="https://minkyoungism.vercel.app" class="archive-btn">
+        전체 아카이브 보기
+      </a>
+    </div>
+
+    <!-- 민경 소개 -->
+    <div class="about">
+      <div style="width:100%;">
+        <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+          <img src="https://minkyoungism.vercel.app/profile.png" alt="민경" style="width:64px; height:64px; border-radius:50%; object-fit:cover; flex-shrink:0;" />
+          <div>
+            <div style="font-size:17px; font-weight:900; color:#111; letter-spacing:-0.02em;">민경이즘</div>
+            <div style="font-size:12px; color:#888; margin-top:3px;">헤어디렉터 · 이미지컨설턴트 · 교수</div>
+          </div>
+        </div>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:9px;">
+          <li style="font-size:13px; color:#333; display:flex; align-items:flex-start; gap:8px;">
+            <span>🎓</span>
+            <span>건국대학교 교육대학원 겸임교수 · 강의 10년차</span>
+          </li>
+          <li style="font-size:13px; color:#333; display:flex; align-items:flex-start; gap:8px;">
+            <span>🔬</span>
+            <span>이학박사 — 건국대 일반대학원 향장생물학전공</span>
+          </li>
+          <li style="font-size:13px; color:#333; display:flex; align-items:flex-start; gap:8px;">
+            <span>📘</span>
+            <span>교육학석사 — 건국대 교육대학원 미용교육전공</span>
+          </li>
+          <li style="font-size:13px; color:#333; display:flex; align-items:flex-start; gap:8px;">
+            <span>✂️</span>
+            <span>MIN BEAUTY HAIR 대표 · Since 2009 · 25년차</span>
+          </li>
+          <li style="font-size:13px; color:#333; display:flex; align-items:flex-start; gap:8px;">
+            <span>📖</span>
+            <span>저서 『행복한 성공수업』</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 푸터 -->
+    <div class="footer">
+      <div class="footer-logo">민경이즘</div>
+      <div class="footer-links">
+        <a href="#">홈페이지</a>
+        <a href="#">인스타그램</a>
+        <a href="#">유튜브</a>
+      </div>
+      <div class="footer-text">
+        본 메일은 민경이즘 헤어 팁을 신청하신 분께 발송됩니다.<br />
+        © 2025 민경이즘. All rights reserved.
+      </div>
+      <div class="footer-unsub">
+        <a href="{{unsubscribe}}">수신거부</a>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
