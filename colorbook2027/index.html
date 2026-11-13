@@ -246,7 +246,9 @@ h2.t em.cb{display:inline!important;font-size:1em!important;color:#8A7BAE;margin
 .prod table{font-size:.86em}
 .prod td:first-child{color:var(--mute);font-weight:400}
 .need{color:#B0708A;font-size:.92em}
-.pq{margin:auto 0 0;padding:.4em 0 .4em 1.2em;border-left:1px solid var(--ink);font-family:var(--f-kr-display);font-style:italic;font-size:1.02em;line-height:1.7;color:#3A3D52}
+.mood-wide{margin:1cqi 0 0!important;aspect-ratio:2.1/1!important}
+.pq{margin:0;padding:.4em 0 .4em 1.2em;border-left:1px solid var(--ink);font-family:var(--f-kr-display);font-style:italic;font-size:1.02em;line-height:1.7;color:#3A3D52}
+.page.split > *{margin-top:0!important}
 .hairsw{background:
   linear-gradient(90deg,rgba(255,255,255,0) 18%,rgba(255,255,255,.28) 30%,rgba(255,255,255,0) 42%,rgba(255,255,255,0) 62%,rgba(255,255,255,.16) 70%,rgba(255,255,255,0) 78%),
   repeating-linear-gradient(90deg,rgba(0,0,0,.10) 0 1px,rgba(255,255,255,.07) 1px 2px,rgba(0,0,0,0) 2px 4px,rgba(0,0,0,.05) 4px 5px),
@@ -923,7 +925,7 @@ html += spread('02 Color & Image · 헤어컬러를 읽는 네 가지 기준',
   page(`<div class="eyebrow" style="color:var(--mute)">Color &amp; image</div><h2 class="t">색은 인상을 바꾼다<em>How color shapes an image</em></h2>
     <p class="lede">같은 사람도, 어떤 색을 입는가에 따라<br>분위기와 인상이 달라집니다.</p>
     <p class="body-col">명도는 무게감을, 채도는 성격을,<br>색온도는 거리감을 만들며<br>색은 얼굴의 균형과 이미지의 방향을 설계합니다.</p>
-    <figure class="mood" style="margin-top:2cqi"><img src="${IMG('mood_glass')}" alt="다섯 가지 컬러의 겹침"></figure>
+    <figure class="mood mood-wide"><img src="${IMG('mood_glass')}" alt="다섯 가지 컬러의 겹침"></figure>
     <blockquote class="pq">색을 고른다는 것은<br>어떻게 보이고 싶은지를 설계하는 일입니다.</blockquote>
     `,{sec:'02 Color & Image'}),
   page(`<div class="eyebrow" style="color:var(--mute)">Color framework</div><h2 class="t">컬러를 읽는 네 가지 기준<em>Value · Chroma · Temperature · Placement</em></h2>
@@ -1119,6 +1121,15 @@ if(cp) cp.addEventListener('click',()=>{
       return [wrapPage(c2,bg,Math.min(sc,H/h))];
     }
     out.push(cur);
+    if(out.length===2 && h0<=BH*1.4){
+      const lastH=[...out[1].children].filter(el=>!keep(el)).reduce((a,el)=>a+el.offsetHeight,0);
+      if(lastH<BH*0.3){
+        meas.innerHTML=''; const c2=page.cloneNode(true); c2.querySelectorAll('.memo').forEach(m=>m.remove()); c2.removeAttribute('id');
+        c2.style.width=BASE+'px'; c2.style.minHeight=BH+'px'; meas.appendChild(c2); const h=c2.offsetHeight; meas.remove();
+        return [wrapPage(c2,bg,Math.min(sc,H/h))];
+      }
+    }
+    out.forEach(pg=>pg.classList.add('split'));
     const pages=out.map((pg,i)=>{
       if(folio && i>0) pg.appendChild(folio.cloneNode(true));
       [...pg.children].forEach(ch=>{ if(ch.style&&ch.style.marginTop==='auto') ch.style.marginTop='3cqi'; });
