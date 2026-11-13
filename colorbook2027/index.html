@@ -249,10 +249,23 @@ h2.t em.cb{display:inline!important;font-size:1em!important;color:#8A7BAE;margin
 .mood-wide{margin:1cqi 0 0!important;aspect-ratio:2.1/1!important}
 .pq{margin:0;padding:.4em 0 .4em 1.2em;border-left:1px solid var(--ink);font-family:var(--f-kr-display);font-style:italic;font-size:1.02em;line-height:1.7;color:#3A3D52}
 .page.split > *{margin-top:0!important}
-.tnote{margin:-1cqi 0 0;font-size:.86em;color:var(--mute);line-height:1.7}
+.tnote{margin:-2.4cqi 0 0;padding:0;font-size:.86em;color:var(--mute);line-height:1.7}
 .dir .ph{aspect-ratio:5/4!important}
 .dir .ph img{object-position:center 22%!important}
 .dirs{gap:2.6cqi 2.4cqi!important}
+.page .fnote{margin-top:auto!important}
+.tgt{display:grid;gap:1.6cqi;margin-top:1cqi}
+.tgt h3{margin:0;font-family:var(--f-body);font-size:.8em;letter-spacing:.12em;color:var(--mute);font-weight:500}
+.tgt dl{margin:0;border-top:1px solid var(--ink)}
+.tgt dl div{display:grid;grid-template-columns:24cqi 1fr;gap:3cqi;padding:1.8cqi 0;border-bottom:1px solid var(--hair);align-items:baseline}
+.tgt dt{font-weight:500;font-size:.92em;white-space:nowrap}
+.tgt dt i{display:inline-block;width:1.6cqi;height:1.6cqi;border-radius:50%;margin-right:1.2cqi}
+.tgt dd{margin:0;font-size:.9em;color:var(--mute);line-height:1.6}
+.step .ph,.step .ph.slot{aspect-ratio:1/1!important}
+.step .ph img{object-position:center 30%}
+.steps{gap:2.4cqi 2cqi!important}
+.step{gap:.7cqi!important}
+.step p{line-height:1.45!important}
 .hairsw{background:
   linear-gradient(90deg,rgba(255,255,255,0) 18%,rgba(255,255,255,.28) 30%,rgba(255,255,255,0) 42%,rgba(255,255,255,0) 62%,rgba(255,255,255,.16) 70%,rgba(255,255,255,0) 78%),
   repeating-linear-gradient(90deg,rgba(0,0,0,.10) 0 1px,rgba(255,255,255,.07) 1px 2px,rgba(0,0,0,0) 2px 4px,rgba(0,0,0,.05) 4px 5px),
@@ -633,7 +646,7 @@ const CH = [
    levels:{labels:[[10.5,'목표 10~11Lv']]},
    formulaHead:['구간','포뮬러 방향','산화제 · 시간'],
    formula:[['뿌리 (신생부)','라벤더 계열 + 모브 핑크 계열, 목표 색상에 맞춰 명도 조정','제품 라인 지침에 따름 · 도포 후 발색 확인'],['기존모 (중간~끝)','시어 모브 핑크 시간차 도포, 동일 명도 기준 조색','바탕·손상도에 따라 권장 산화제 선택'],['페이스라인','라벤더 모브 베이스, 얇은 섹션으로 투명감 강조','테스트 스트랜드 후 방치 시간 결정'],['마무리','안쪽 섹션에 딥 바이올렛 포인트, 베이스와 명도 대비','설명서 기준 발색 상태 수시 확인']],
-   products:[['컬러','밀본 (MILBON)','머메이드 라벤더 애쉬 7Lv'],['컬러','밀본 (MILBON)','시어 모브 핑크 11Lv'],['포인트 컬러','<span class="need">확인 필요</span>','딥 바이올렛'],['탈색제','<span class="need">확인 필요</span>','<span class="need">확인 필요</span>'],['산화제','<span class="need">확인 필요</span>','<span class="need">확인 필요</span>']],
+   products:[['컬러','밀본 (MILBON)','머메이드 라벤더 애쉬 7Lv','<span class="need">확인 필요</span>'],['컬러','밀본 (MILBON)','시어 모브 핑크 11Lv','<span class="need">확인 필요</span>'],['포인트 컬러','<span class="need">확인 필요</span>','딥 바이올렛','<span class="need">확인 필요</span>'],['탈색제','<span class="need">확인 필요</span>','<span class="need">확인 필요</span>','<span class="need">확인 필요</span>'],['산화제','<span class="need">확인 필요</span>','<span class="need">확인 필요</span>','<span class="need">확인 필요</span>']],
    tip:'파스텔 라벤더 모브는 균일하고 밝은 바탕에서 색이 잘 표현됩니다. 실제 제품명, 컬러 번호, 산화제, 방치 시간은 사용하는 컬러 라인과 모발 진단 후 확정하고, 시술 전 테스트 스트랜드를 진행합니다.',
    stepsCols:3,
    steps:[['B_s7_0','탈색 도포','섹션을 나눠 탈색제를 도포합니다.'],['B_s7_1','보색 샴푸','노란 기를 정리합니다.'],['B_s7_2','밝은 바탕 완성','균일한 고명도 베이스를 확인합니다.'],['B_s8_0','라벤더 모브 도포','목표 명도에 맞춰 컬러를 바릅니다.'],['B_s8_1','방치 · 발색 확인','도포 후 색을 수시로 확인합니다.'],['B_s9_0','이너 포인트','안쪽 섹션에 딥 바이올렛을 호일로 분리합니다.'],['B_s8_2','뒷모습 발색','라벤더 모브 발색을 확인합니다.'],['B_s9_1','이너 컬러 후','안쪽 포인트가 드러난 뒷모습입니다.'],['B_s9_2','완성','라벤더 모브 + 딥 바이올렛.']],
@@ -671,7 +684,7 @@ const CH = [
    map:true,
    formulaHead:['구간','레벨 · 작업','포뮬러 (제품)','산화제 · 시간 · 배합'],
    formula:[['겉머리 · 홀슈 위','자연모 · 4Lv','—','—'],['프리라이트닝 · 홀슈 아래 전체','탈색 3~4회 · 15Lv 이상','슈바르츠코프 화이버플렉스 파우더 블리치','밀본 6% · 30분 · 1:2'],['미들 · 홀슈 아래 ~ B.P','진한 파랑','올디브 어딕시 9레벨 사파이어','사사키 2제 3% · <span class="blank">분</span> · <span class="blank">:</span>'],['네이프 · B.P 아래','하늘색','올디브 어딕시 5레벨 코발트-비','사사키 2제 3% · <span class="blank">분</span> · <span class="blank">:</span>'],['마무리','트리트먼트 · 드라이','<span class="blank">&nbsp;</span>','<span class="blank">&nbsp;</span>']],
-   products:[['탈색제','슈바르츠코프','화이버플렉스 파우더 블리치'],['탈색 산화제','밀본 (MILBON)','6%'],['컬러 · 진한 파랑','올디브 어딕시','9레벨 사파이어'],['컬러 · 하늘색','올디브 어딕시','5레벨 코발트-비'],['컬러 산화제','사사키 헤어컬러','2제 3%'],['첨가제','<span class="need">확인 필요</span>','본딩 · 클리닉 (콜라겐, 케라틴)']],
+   products:[['탈색제','슈바르츠코프','화이버플렉스 파우더 블리치','1 : 2 · 30분 · 3~4회'],['탈색 산화제','밀본 (MILBON)','6%','—'],['컬러 · 진한 파랑','올디브 어딕시','9레벨 사파이어','2제 3% · <span class="need">확인 필요</span>'],['컬러 · 하늘색','올디브 어딕시','5레벨 코발트-비','2제 3% · <span class="need">확인 필요</span>'],['컬러 산화제','사사키 헤어컬러','2제 3%','—'],['첨가제','<span class="need">확인 필요</span>','본딩 · 클리닉 (콜라겐, 케라틴)','<span class="need">확인 필요</span>']],
    tip:'하늘색처럼 연한 블루는 바탕이 거의 백금발이어야 맑게 나와요. 노란 언더톤이 남으면 노랑 + 파랑 = 초록. 그래서 15Lv 이상까지 밝혀요.',
    stepsCols:4,
    steps:[[null,'상담 · Before','레벨 · 손상도 · 백모와 패치 테스트 결과를 확인하고 BEFORE 사진을 먼저 찍어요.'],[null,'섹션 나누기','홀슈 위는 클립으로 고정. 백포인트 기준 가로 라인으로 미들과 네이프를 나눠요.'],[null,'탈색 1·2차 · 30분','홀슈 아래 전체를 얇게 떠서 호일 작업. 중간~끝 먼저, 뿌리는 마지막.'],[null,'레벨 체크 3·4차 · 30분','15Lv 이상이 안 나오면 3·4차 탈색. 샴푸 후 완전히 말려요.'],[null,'헹굼 · 드라이','블랙을 헹굴 때도 아랫머리 호일은 그대로. 샴푸 후 완전히 말려요.'],[null,'블루 2색','홀슈 아래~B.P는 진한 파랑, B.P 아래는 하늘색. 색마다 브러시를 따로.'],[null,'헹굼 · 드라이','찬물로 헹구고 약산성 트리트먼트. 찬바람으로 말리고 스타일링.'],[null,'After','AFTER · DETAIL을 찍어요.']],
@@ -710,7 +723,7 @@ const CH = [
    levels:null,
    formulaHead:['단계','배합 비율','시술 방법','시간'],
    formula:[['01 탈색 · Bleaching','탈색제 : 산화제 = <span class="num">1 : 2</span>','원터치 · 산화제 <span class="num">9%</span>','<span class="num">30분</span>'],['02 염색 · Coloring','페일 베이지 : 산화제 = <span class="num">1 : 2</span>','원터치 · 산화제 <span class="num">3%</span>','<span class="num">25분</span>'],['03 토닝 · Toning','C-10/BV : C-8/RV = <span class="num">8 : 1</span>','원터치 · 산화제 <span class="num">3%</span>','<span class="num">5분</span>']],
-   products:[['탈색제','<span class="need">확인 필요</span>','<span class="need">확인 필요</span>'],['탈색 산화제','<span class="need">확인 필요</span>','9%'],['컬러','<span class="need">확인 필요</span>','페일 베이지'],['토닝','<span class="need">확인 필요</span>','C-10/BV · C-8/RV (8 : 1)'],['컬러 · 토닝 산화제','<span class="need">확인 필요</span>','3%']],
+   products:[['탈색제','<span class="need">확인 필요</span>','<span class="need">확인 필요</span>','1 : 2 · 9% · 30분'],['컬러','<span class="need">확인 필요</span>','페일 베이지','1 : 2 · 3% · 25분'],['토닝','<span class="need">확인 필요</span>','C-10/BV + C-8/RV','8 : 1 · 3% · 5분']],
    tip:'',
    stepsCols:2,
    steps:[['D_s5_0','탈색','원터치 · 9% · 30분'],['D_s6_0','염색','페일 베이지 · 3% · 25분'],['D_s7_0','토닝','C-10/BV : C-8/RV = 8 : 1 · 5분'],['D_s8_0','완성','건조 후 컬러 확인']],
@@ -803,7 +816,7 @@ function chapter(ch){
       ${ch.swatchImg?`<figure class="swimg"><img src="${IMG(ch.swatchImg)}" alt="팀 컬러 스와치"><figcaption>${ch.swatchCap}</figcaption></figure>`:''}${ch.levels?gauge(ch.levels):''}
       ${ch.map?`<figure class="swimg"><img src="${IMG('C_s4_1')}" alt="섹션 맵"><figcaption>팀이 그린 섹션 맵 · 홀슈 위 소프트 블랙, 홀슈 아래~B.P 진한 파랑, B.P 아래 하늘색</figcaption></figure>`:''}
       <div class="tbl"><table><thead><tr>${ch.formulaHead.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${ch.formula.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>
-      ${ch.products?`<div class="prod"><h3>사용 제품</h3><div class="tbl"><table><thead><tr><th>구분</th><th>브랜드</th><th>제품 · 번호</th></tr></thead><tbody>${ch.products.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div></div>`:''}
+      ${ch.products?`<div class="prod"><h3>사용 제품 · 배합</h3><div class="tbl"><table><thead><tr><th>구분</th><th>브랜드</th><th>제품 · 번호</th><th>배합 · 산화제 · 시간</th></tr></thead><tbody>${ch.products.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div></div>`:''}
       ${ch.tip?`<div class="tip" style="margin-top:auto"><b>TIP</b><span>${ch.tip}</span></div>`:''}${memo(M.formula,'top:22cqi;right:5cqi')}`,{cls:ch.cls,ch}),
     page(`<div class="eyebrow">Practice · 시술 과정</div><h2 class="t">시술 과정<em>Step by step</em></h2>
       <div class="steps" style="--cols:${ch.stepsCols}">${ch.steps.map(([img,t,d],i)=>`<div class="step">${img?`<div class="ph"><img src="${IMG(img)}" alt="${t}" loading="lazy"></div>`:`<div class="ph slot">Step photo</div>`}<span class="n">STEP ${String(i+1).padStart(2,'0')}</span><b>${t}</b><p>${d}</p></div>`).join('')}</div>${memo(M.steps,'bottom:12cqi;right:5cqi')}`,{cls:ch.cls,ch}));
@@ -825,14 +838,14 @@ function chapter(ch){
     ? `<div class="duo">${ch.styleImg.map(n=>`<div class="hero-ph"><img src="${IMG(n)}" alt="스타일링" loading="lazy"></div>`).join('')}</div>`
     : ch.styleImg.length===1 ? `<div class="hero-ph"><img src="${IMG(ch.styleImg[0])}" alt="스타일링 보드" loading="lazy" style="object-position:center 20%"></div>`
     : `<div class="slot hero-ph" style="display:flex">Styling shot · 실습 후 직접 촬영</div>`;
-  out += spread(`04 Collection · ${ch.team} · 디자인: 스타일링 / 비포 & 애프터`,
-    page(`<div class="eyebrow">Design · 스타일링 제안</div><h2 class="t">스타일링 제안<em>The look</em></h2>
-      <div class="attrs">${ch.styling.map(([a,b])=>`<div class="attr"><h3>${a}</h3><p>${b}</p></div>`).join('')}</div>
-      ${sImgs}${ch.outfits?`<h3>코디 제안</h3><div class="outfits">${ch.outfits.map(n=>`<img src="${IMG(n)}" alt="코디" loading="lazy">`).join('')}</div>`:''}${memo(M.styling,'top:40cqi;right:5cqi')}`,{cls:ch.cls,ch}),
+  out += spread(`04 Collection · ${ch.team} · 결과: 비포 & 애프터 / 디자인: 스타일링`,
     page(`<div class="eyebrow">Practice · 비포 & 애프터</div><h2 class="t">비포 & 애프터<em>Before & after</em></h2>
       <div class="ba">${ch.ba.map(([img,t,d])=>`<figure><div class="ph ${img?'':'slot'}">${img?`<img src="${IMG(img)}" alt="${t}" loading="lazy">`:'사진 자리'}</div><figcaption>${t}<span>${d}</span></figcaption></figure>`).join('')}</div>
       ${ch.baText?`<p class="pull" style="font-size:clamp(12px,2.9cqi,17px)">${ch.baText}</p>`:`<p class="slot" style="min-height:10cqi">코멘트 · 실습 후 작성</p>`}
-      ${memo(M.ba,'top:24cqi;right:5cqi')}`,{cls:ch.cls,ch}));
+      ${memo(M.ba,'top:24cqi;right:5cqi')}`,{cls:ch.cls,ch}),
+    page(`<div class="eyebrow">Design · 스타일링 제안</div><h2 class="t">스타일링 제안<em>The look</em></h2>
+      <div class="attrs">${ch.styling.map(([a,b])=>`<div class="attr"><h3>${a}</h3><p>${b}</p></div>`).join('')}</div>
+      ${sImgs}${ch.outfits?`<h3>코디 제안</h3><div class="outfits">${ch.outfits.map(n=>`<img src="${IMG(n)}" alt="코디" loading="lazy">`).join('')}</div>`:''}${memo(M.styling,'top:40cqi;right:5cqi')}`,{cls:ch.cls,ch}));
 
   out += spread(`04 Collection · ${ch.team} · 결과 분석 / Meet the creators`,
     page(`<div class="eyebrow">Analysis · 결과 분석</div><h2 class="t">목표와 결과<em>Result & analysis</em></h2>
@@ -966,9 +979,8 @@ html += spread('03 2027 Color Direction · 트렌드 분석 / 네 가지 방향'
   'forecast');
 html += spread('03 2027 Color Direction · 컬렉션 맵 / 살롱 제안 가이드',
   page(`<div class="eyebrow" style="color:var(--mute)">Collection map</div><h2 class="t">한눈에 보는 컬렉션<em>Collection at a glance</em></h2>
-    <div class="tbl"><table><thead><tr><th>Direction</th><th>컬러</th><th>핵심 테크닉</th><th>베이스</th></tr></thead><tbody>${order.map(c=>c.waiting?`<tr><td>${c.dir}</td><td colspan="3" class="mute">Team A 제출 예정</td></tr>`:`<tr><td>${c.dir}</td><td><span style="display:inline-flex;gap:3px;vertical-align:middle;margin-right:6px">${c.swatches.map(s=>`<i style="width:10px;height:10px;border-radius:50%;background:${s.c};display:inline-block"></i>`).join('')}</span>${c.ko}</td><td>${c.technique}</td><td class="num" style="font-family:var(--f-data);font-size:.9em">${c.baseShort}</td></tr>`).join('')}</tbody></table></div>
-    <h3 style="color:var(--ink)">타깃</h3>
-    <ul class="dots" style="--k3:#B9BAC0">${order.filter(c=>!c.waiting).map(c=>`<li><b>${c.ko}</b> · ${c.target}</li>`).join('')}</ul>`,{sec:'03 2027 Color Direction'}),
+    <div class="tbl"><table><thead><tr><th>Direction</th><th>컬러</th><th>핵심 테크닉</th><th>베이스</th></tr></thead><tbody>${order.map(c=>c.waiting?`<tr><td>${c.dir}</td><td><span style="display:inline-flex;gap:3px;vertical-align:middle;margin-right:6px"><i style="width:10px;height:10px;border-radius:50%;background:#B87355;display:inline-block"></i></span>코퍼</td><td colspan="2" class="mute">원고 제출 예정</td></tr>`:`<tr><td>${c.dir}</td><td><span style="display:inline-flex;gap:3px;vertical-align:middle;margin-right:6px">${c.swatches.map(s=>`<i style="width:10px;height:10px;border-radius:50%;background:${s.c};display:inline-block"></i>`).join('')}</span>${c.ko}</td><td>${c.technique}</td><td class="num" style="font-family:var(--f-data);font-size:.9em">${c.baseShort}</td></tr>`).join('')}</tbody></table></div>
+    <div class="tgt"><h3>Target · 타깃</h3><dl>${order.filter(c=>!c.waiting).map(c=>`<div><dt><i style="background:${c.swatches[0].c}"></i>${c.ko}</dt><dd>${c.target}</dd></div>`).join('')}</dl></div>`,{sec:'03 2027 Color Direction'}),
   page(`<div class="eyebrow" style="color:var(--mute)">Salon guide</div><h2 class="t">상담에서 이렇게 제안하세요<em>From trend to consultation</em></h2>
     <div class="guide">
       <div><q>출근할 때는 단정해야 하는데, 나만의 포인트는 갖고 싶어요.</q><span>→ Hidden Expression · 겉은 차분하게, 이너·네이프에 컬러</span></div>
