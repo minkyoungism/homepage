@@ -221,6 +221,9 @@ h2.t em.cb{display:inline!important;font-size:1em!important;color:#8A7BAE;margin
 .step p,.ba figcaption span,.dir span,.season span{font-size:.92em!important}
 .run,.folio{font-size:clamp(8.5px,1.65cqi,11px)!important}
 .eyebrow{font-size:clamp(9px,1.75cqi,12px)!important}
+.fnote{margin-top:auto;display:grid;gap:2.2cqi}
+.fnote p{margin:0;font-size:.9em;color:var(--mute);line-height:1.7}
+.fnote .srcs{margin:0}
 .hairsw{background:
   linear-gradient(90deg,rgba(255,255,255,0) 18%,rgba(255,255,255,.28) 30%,rgba(255,255,255,0) 42%,rgba(255,255,255,0) 62%,rgba(255,255,255,.16) 70%,rgba(255,255,255,0) 78%),
   repeating-linear-gradient(90deg,rgba(0,0,0,.10) 0 1px,rgba(255,255,255,.07) 1px 2px,rgba(0,0,0,0) 2px 4px,rgba(0,0,0,.05) 4px 5px),
@@ -916,13 +919,13 @@ html += spread('03 2027 Color Direction · 트렌드 분석 / 네 가지 방향'
       <tr><td><i style="background:#CDBFAE"></i>크림 · 뉴트럴</td><td>헤어 예측에서 아이시 블론드 대신 크림 블론드, 붉은 기를 덜어낸 부드러운 톤<sup>4</sup></td><td><b>어반 베이지</b><br><span class="mute">Team D · 회색빛을 더한 저채도 베이지</span></td></tr>
       <tr><td><i style="background:#B87355"></i>코퍼</td><td class="mute">원고 제출 후 근거 추가</td><td><b>코퍼</b><br><span class="mute">Team A · 원고 제출 예정</span></td></tr>
     </tbody></table></div>
-    <p class="body-col" style="font-size:.9em;color:var(--mute)">팀별 컬러는 외부 기관이 공식 선정한 색과 구분해 표기했습니다. 표의 트렌드 자료는 각 팀이 컬러를 해석하는 출발점으로 사용했습니다.</p>
-    <ol class="srcs" style="margin-top:auto">
+    <div class="fnote"><p>팀별 컬러는 외부 기관이 공식 선정한 색과 구분해 표기했습니다.<br>표의 트렌드 자료는 각 팀이 컬러를 해석하는 출발점으로 사용했습니다.</p>
+    <ol class="srcs">
       <li>WGSN · Coloro, Colour of the Year 2027: Luminous Blue (2025.4)</li>
       <li>Who What Wear, Fashion Week Beauty Trends SS27</li>
       <li>Sensient Beauty, Next Era of Hair Color Trends 2025–2027</li>
       <li>Bustle, Winter 2027 Hair Color Trends · HSA, Hair Color Trends 2026/2027</li>
-    </ol>
+    </ol></div>
     ${memo('트렌드 근거는 공개 기사와 예측 기관 발표를 정리한 것이에요. 헤어 쪽 자료는 업계 블로그·매체 위주라 교수님 현장 관점 한두 문장을 더하면 좋아요.','top:20cqi;right:5cqi')}`,{sec:'03 2027 Color Direction'}),
   page(`<div class="eyebrow" style="color:var(--mute)">Four directions</div><h2 class="t">네 가지 컬러 방향<em>2027 Hair color directions</em></h2>
     <div class="dirs">${order.map(dirCard).join('')}</div>`,{sec:'03 2027 Color Direction'}),
