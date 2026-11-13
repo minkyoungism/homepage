@@ -586,15 +586,23 @@ html{scroll-behavior:smooth}
 .signals .no{font-family:var(--f-data);color:var(--mute)}
 .signals b{display:block}
 .signals p{font-size:.9em;color:var(--mute)}
-.guide{display:grid;gap:3cqi}
+.guide{display:grid;gap:0}
 table.cmap{font-size:.88em;table-layout:auto;width:100%}
 table.cmap td:first-child,table.cmap td:last-child{white-space:nowrap}
 table.cmap td:nth-child(3){white-space:normal;word-break:keep-all}
-.guide > div{display:grid;grid-template-columns:13cqi 1fr;gap:4cqi;padding:3cqi;background:var(--paper-2);align-items:center}
-.guide .gsw{display:grid;grid-template-rows:repeat(3,1fr);aspect-ratio:3/4;overflow:hidden}
+.guide > div{display:grid;grid-template-columns:2.2cqi 1fr;gap:3.6cqi;padding:3.2cqi 0;border-top:1px solid var(--hair);background:none;align-items:stretch}
+.guide > div:last-child{border-bottom:1px solid var(--hair)}
+.guide .gsw{display:grid;grid-template-rows:repeat(3,1fr)}
 .guide .gsw i{display:block}
-.guide p{margin:0;display:grid;gap:.9cqi}
+.guide p{margin:0;display:grid;gap:1cqi}
 .guide small{font-family:var(--f-data);font-size:.72em;letter-spacing:.14em;text-transform:uppercase;color:#8A7BAE}
+.guide q{font-size:1.12em;line-height:1.55}
+.guide span{font-size:.88em;color:var(--mute)}
+.guide span em{font-family:var(--f-latin);font-style:italic;font-size:1.18em;color:#1E2A44;margin-right:.8em}
+.gchk{margin-top:auto;display:grid;gap:1.6cqi}
+.gchk h3{margin:0}
+.gchk table{font-size:.88em}
+.gchk td:first-child{white-space:nowrap;width:28%}
 .guide q{font-family:var(--f-kr-display);font-size:1.05em;quotes:"“" "”"}
 .guide span{font-size:.88em;color:var(--mute)}
 .analysis{display:grid;grid-template-columns:1fr 1fr;gap:2.4cqi}
@@ -990,13 +998,18 @@ html += spread('03 2027 Color Direction · 컬렉션 맵 / 살롱 제안 가이�
   page(`<div class="eyebrow" style="color:var(--mute)">Collection map</div><h2 class="t">한눈에 보는 컬렉션<em>Collection at a glance</em></h2>
     <div class="tbl"><table class="cmap"><thead><tr><th>Direction</th><th>컬러</th><th>핵심 테크닉</th><th>베이스</th></tr></thead><tbody>${order.map(c=>c.waiting?`<tr><td>${c.dir}</td><td style="white-space:nowrap"><span style="display:inline-flex;gap:3px;vertical-align:middle;margin-right:6px"><i style="width:10px;height:10px;border-radius:50%;background:#B87355;display:inline-block"></i></span>코퍼</td><td colspan="2" class="mute">원고 제출 예정</td></tr>`:`<tr><td>${c.dir}</td><td style="white-space:nowrap"><span style="display:inline-flex;gap:3px;vertical-align:middle;margin-right:6px">${c.swatches.map(s=>`<i style="width:10px;height:10px;border-radius:50%;background:${s.c};display:inline-block"></i>`).join('')}</span>${c.ko}</td><td>${c.technique}</td><td class="num" style="font-family:var(--f-data);font-size:.9em">${c.baseShort}</td></tr>`).join('')}</tbody></table></div>
     <div class="tgt"><h3>Target · 타깃</h3><dl>${order.filter(c=>!c.waiting).map(c=>`<div><dt><i style="background:${c.swatches[0].c}"></i>${c.ko}</dt><dd>${c.target}</dd></div>`).join('')}</dl></div>`,{sec:'03 2027 Color Direction'}),
-  page(`<div class="eyebrow" style="color:var(--mute)">Salon guide</div><h2 class="t">상담에서 이렇게 제안하세요<em>From trend to consultation</em></h2>
+  page(`<div class="eyebrow" style="color:var(--mute)">Salon guide</div><h2 class="t">트렌드를 고객의 컬러로 연결하는 법<em>From trend to consultation</em></h2>
     <div class="guide">
-      <div><b class="gsw"><i style="background:#16181D"></i><i style="background:#2E4163"></i><i style="background:#9AAAC4"></i></b><p><small>Team C · 시크리티브 틸</small><q>출근할 때는 단정해야 하는데, 나만의 포인트는 갖고 싶어요.</q><span>→ Hidden Expression · 겉은 차분하게, 이너·네이프에 컬러</span></p></div>
-      <div><b class="gsw"><i style="background:#BBB0A6"></i><i style="background:#9C948C"></i><i style="background:#D8CFC4"></i></b><p><small>Team D · 어반 베이지</small><q>브라운의 붉은 기와 노란 기가 늘 신경 쓰여요.</q><span>→ Quiet Elegance · BV 토닝으로 정리한 저채도 베이지</span></p></div>
-      <div><b class="gsw"><i style="background:#887B9B"></i><i style="background:#D4A3BC"></i><i style="background:#4B2E6B"></i></b><p><small>Team B · 라벤더 모브</small><q>부드럽지만 평범하지 않은 색이면 좋겠어요.</q><span>→ Soft Individuality · 파스텔 베이스에 딥 컬러 포인트</span></p></div>
+      <div><b class="gsw"><i style="background:#16181D"></i><i style="background:#2E4163"></i><i style="background:#9AAAC4"></i></b><p><small>Team C · 시크리티브 틸</small><q>출근할 때는 단정해야 하는데, 나만의 포인트는 갖고 싶어요.</q><span><em>Hidden Expression</em>겉은 차분하게, 이너·네이프에 컬러</span></p></div>
+      <div><b class="gsw"><i style="background:#BBB0A6"></i><i style="background:#9C948C"></i><i style="background:#D8CFC4"></i></b><p><small>Team D · 어반 베이지</small><q>브라운의 붉은 기와 노란 기가 늘 신경 쓰여요.</q><span><em>Quiet Elegance</em>BV 토닝으로 정리한 저채도 베이지</span></p></div>
+      <div><b class="gsw"><i style="background:#887B9B"></i><i style="background:#D4A3BC"></i><i style="background:#4B2E6B"></i></b><p><small>Team B · 라벤더 모브</small><q>부드럽지만 평범하지 않은 색이면 좋겠어요.</q><span><em>Soft Individuality</em>파스텔 베이스에 딥 컬러 포인트</span></p></div>
     </div>
-    <p class="note" style="margin-top:auto">※ 모든 제안은 모발 진단, 퍼스널컬러, 유지 관리 가능성을 함께 확인한 뒤 확정합니다.</p>
+    <div class="gchk"><h3>상담 시 확인할 항목</h3><div class="tbl"><table><thead><tr><th>항목</th><th>확인 내용</th></tr></thead><tbody>
+      <tr><td>모발 베이스</td><td>현재 명도, 잔류 색소</td></tr>
+      <tr><td>모발 이력</td><td>염색 · 탈색 · 펌 이력</td></tr>
+      <tr><td>이미지 방향</td><td>피부톤, 선호 이미지, 직업</td></tr>
+      <tr><td>유지 관리</td><td>퇴색, 리터치 주기, 관리 가능성</td></tr>
+    </tbody></table></div><p class="tnote">모든 제안은 위 항목을 함께 확인한 뒤 확정합니다.</p></div>
     ${memo('살롱 제안 가이드는 편집부 초안이에요. Team A 방향이 정해지면 한 줄 추가.','top:20cqi;right:5cqi')}`,{sec:'03 2027 Color Direction'}));
 
 mark('collection');
