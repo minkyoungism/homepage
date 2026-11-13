@@ -246,6 +246,7 @@ h2.t em.cb{display:inline!important;font-size:1em!important;color:#8A7BAE;margin
 .prod table{font-size:.86em}
 .prod td:first-child{color:var(--mute);font-weight:400}
 .need{color:#B0708A;font-size:.92em}
+.pq{margin:auto 0 0;padding:.4em 0 .4em 1.2em;border-left:1px solid var(--ink);font-family:var(--f-kr-display);font-style:italic;font-size:1.02em;line-height:1.7;color:#3A3D52}
 .hairsw{background:
   linear-gradient(90deg,rgba(255,255,255,0) 18%,rgba(255,255,255,.28) 30%,rgba(255,255,255,0) 42%,rgba(255,255,255,0) 62%,rgba(255,255,255,.16) 70%,rgba(255,255,255,0) 78%),
   repeating-linear-gradient(90deg,rgba(0,0,0,.10) 0 1px,rgba(255,255,255,.07) 1px 2px,rgba(0,0,0,0) 2px 4px,rgba(0,0,0,.05) 4px 5px),
@@ -919,16 +920,17 @@ html += spread("01 Opening · Editor's note / 기획과 교육",
 mark('message');
 const strip = arr => `<div class="strip">${arr.map(c=>`<i style="background:${c}"></i>`).join('')}</div>`;
 html += spread('02 Color & Image · 헤어컬러를 읽는 네 가지 기준',
-  page(`<div class="eyebrow" style="color:var(--mute)">Perspective</div><h2 class="t">헤어컬러는 어떻게 인상을 바꾸는가<em>Color, contrast and perception</em></h2>
-    <p class="body-col">헤어컬러는 얼굴 주변에서 넓은 면적을 차지합니다. 색의 밝기와 채도, 따뜻하거나 차가운 기운, 그리고 배치에 따라 얼굴과 헤어스타일의 대비가 달라집니다.</p>
-    <dl class="crit"><div><dt>명도</dt><dd>얼굴 주변의 밝기 대비와 전체적인 무게감에 영향을 줍니다.</dd></div><div><dt>채도</dt><dd>색이 선명하게 드러나는 정도를 조절합니다.</dd></div><div><dt>색온도</dt><dd>따뜻함과 차가움의 인상을 형성하는 데 관여합니다.</dd></div><div><dt>배치</dt><dd>뿌리 · 중간 · 끝, 또는 부분적인 포인트의 위치에 따라 시선이 달라집니다.</dd></div></dl>
-    <figure class="mood"><img src="${IMG('mood_glass')}" alt="다섯 가지 컬러의 겹침"></figure>
+  page(`<div class="eyebrow" style="color:var(--mute)">Color &amp; image</div><h2 class="t">색은 인상을 바꾼다<em>How color shapes an image</em></h2>
+    <p class="lede">같은 사람도, 어떤 색을 입는가에 따라<br>분위기와 인상이 달라집니다.</p>
+    <p class="body-col">명도는 무게감을, 채도는 성격을,<br>색온도는 거리감을 만들며<br>색은 얼굴의 균형과 이미지의 방향을 설계합니다.</p>
+    <figure class="mood" style="margin-top:2cqi"><img src="${IMG('mood_glass')}" alt="다섯 가지 컬러의 겹침"></figure>
+    <blockquote class="pq">색을 고른다는 것은<br>어떻게 보이고 싶은지를 설계하는 일입니다.</blockquote>
     `,{sec:'02 Color & Image'}),
   page(`<div class="eyebrow" style="color:var(--mute)">Color framework</div><h2 class="t">컬러를 읽는 네 가지 기준<em>Value · Chroma · Temperature · Placement</em></h2>
     <div class="vars">
-      <div class="var"><h3 style="color:var(--ink)">명도 · Value</h3>${strip([16,32,50,68,86].map(l=>`hsl(265 16% ${l}%)`))}<div class="ends"><span>어둡게</span><span>밝게</span></div></div>
-      <div class="var"><h3 style="color:var(--ink)">채도 · Chroma</h3>${strip([0,20,40,60,82].map(s=>`hsl(272 ${s}% 52%)`))}<div class="ends"><span>차분하게</span><span>선명하게</span></div></div>
-      <div class="var"><h3 style="color:var(--ink)">색온도 · Temperature</h3>${strip(['hsl(36 40% 63%)','hsl(34 20% 63%)','hsl(40 3% 63%)','hsl(212 20% 63%)','hsl(214 40% 63%)'])}<div class="ends"><span>따뜻하게</span><span>차갑게</span></div></div>
+      <div class="var"><h3 style="color:var(--ink)">명도 · Value</h3>${strip([16,32,50,68,86].map(l=>`hsl(265 16% ${l}%)`))}<div class="ends"><span>무게감 · 신뢰</span><span>가벼움 · 화사함</span></div></div>
+      <div class="var"><h3 style="color:var(--ink)">채도 · Chroma</h3>${strip([0,20,40,60,82].map(s=>`hsl(272 ${s}% 52%)`))}<div class="ends"><span>차분함 · 세련됨</span><span>개성 · 에너지</span></div></div>
+      <div class="var"><h3 style="color:var(--ink)">색온도 · Temperature</h3>${strip(['hsl(36 40% 63%)','hsl(34 20% 63%)','hsl(40 3% 63%)','hsl(212 20% 63%)','hsl(214 40% 63%)'])}<div class="ends"><span>웜 · 친근함 · 부드러움</span><span>쿨 · 도시적 · 세련됨</span></div></div>
       <div class="var"><h3 style="color:var(--ink)">배치 · Placement</h3><div class="place"><div><b>페이스라인</b>얼굴 인상에 직접 닿는 자리. 피부 톤과의 조화가 핵심</div><div><b>전체</b>이미지 전체가 바뀌는 선택. 명도 대비로 무게 조절</div><div><b>이너 · 네이프</b>움직일 때만 드러나는 반전. 부담은 낮추고 개성은 남김</div></div></div>
     </div>`,{sec:'02 Color & Image'}),
   'message');
