@@ -187,6 +187,13 @@ table.fc sup{font-family:var(--f-data);font-size:.7em;color:var(--mute)}
 .crit div{display:grid;grid-template-columns:16cqi 1fr;gap:3cqi;padding:2.6cqi 0;border-bottom:1px solid var(--hair);align-items:baseline}
 .crit dt{font-family:var(--f-kr-display);font-weight:600;font-size:1.1em}
 .crit dd{margin:0;color:var(--mute)}
+.cmp2{margin:auto 0 0;display:grid;grid-template-columns:1fr 1fr;gap:2cqi}
+.cmp2 > div{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--paper-2)}
+.cmp2 img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%}
+.cmp2 span{position:absolute;left:0;right:0;bottom:0;padding:2cqi 2.4cqi;color:#fff;font-size:.82em;line-height:1.4;background:linear-gradient(transparent,rgba(20,20,28,.6))}
+.cmp2 span b{display:block;font-size:1.1em}
+.cmp2 .ai-tag{top:1.2cqi;bottom:auto;right:1.2cqi}
+.cmp2 figcaption{grid-column:1/-1;font-size:.82em;color:var(--mute)}
 .hairsw{background:
   linear-gradient(90deg,rgba(255,255,255,0) 18%,rgba(255,255,255,.28) 30%,rgba(255,255,255,0) 42%,rgba(255,255,255,0) 62%,rgba(255,255,255,.16) 70%,rgba(255,255,255,0) 78%),
   repeating-linear-gradient(90deg,rgba(0,0,0,.10) 0 1px,rgba(255,255,255,.07) 1px 2px,rgba(0,0,0,0) 2px 4px,rgba(0,0,0,.05) 4px 5px),
@@ -857,6 +864,7 @@ html += spread('02 Color & Image · 헤어컬러를 읽는 네 가지 기준',
   page(`<div class="eyebrow" style="color:var(--mute)">Perspective</div><h2 class="t">헤어컬러는 어떻게 인상을 바꾸는가<em>Color, contrast and perception</em></h2>
     <p class="body-col">헤어컬러는 얼굴 주변에서 넓은 면적을 차지합니다. 색의 밝기와 채도, 따뜻하거나 차가운 기운, 그리고 배치에 따라 얼굴과 헤어스타일의 대비가 달라집니다.</p>
     <dl class="crit"><div><dt>명도</dt><dd>얼굴 주변의 밝기 대비와 전체적인 무게감에 영향을 줍니다.</dd></div><div><dt>채도</dt><dd>색이 선명하게 드러나는 정도를 조절합니다.</dd></div><div><dt>색온도</dt><dd>따뜻함과 차가움의 인상을 형성하는 데 관여합니다.</dd></div><div><dt>배치</dt><dd>뿌리 · 중간 · 끝, 또는 부분적인 포인트의 위치에 따라 시선이 달라집니다.</dd></div></dl>
+    <figure class="cmp2"><div><img src="${IMG('B_s5_0')}" alt="라벤더 모브"><span><b>라벤더 모브</b>쿨 · 중채도 · 고명도</span></div><div><img src="${IMG('D_s1_0')}" alt="어반 베이지"><span><b>어반 베이지</b>뉴트럴 · 저채도 · 중명도</span></div><figcaption>명도와 채도, 색온도의 차이가 전체 인상을 다르게 만듭니다.</figcaption></figure>
     `,{sec:'02 Color & Image'}),
   page(`<div class="eyebrow" style="color:var(--mute)">Color framework</div><h2 class="t">컬러를 읽는 네 가지 기준<em>Value · Chroma · Temperature · Placement</em></h2>
     <div class="vars">
