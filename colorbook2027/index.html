@@ -6,7 +6,7 @@
 /* Layout: a proof sheet of two-page spreads on a desk. Every chapter shares one grid; only the chapter's key colors change. */
 :root{
   --desk:#E6E7EA; --desk-ink:#2A2B30; --desk-mute:#6B6D75; --desk-line:#C9CBD1;
-  --paper:#FCFBFC; --paper-2:#F4F3F6; --ink:#1B1B1F; --mute:#74757D; --hair:#DCDDE2;
+  --paper:#FCFBFC; --paper-2:#F4F3F6; --ink:#1B1B1F; --mute:#5A5C66; --hair:#DCDDE2;
   --memo:#FFE97A; --memo-ink:#3D3400;
   --f-latin:"Bodoni Moda","Didot","Times New Roman",serif;
   --f-kr-display:"Noto Serif KR","Nanum Myeongjo",serif;
@@ -52,7 +52,7 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 
 .page{container-type:inline-size;background:var(--paper);color:var(--ink);aspect-ratio:210/297;min-width:0;position:relative;
   padding:7cqi 7.5cqi 11cqi;display:flex;flex-direction:column;gap:3.4cqi;overflow:visible;
-  font-size:clamp(10.5px,2.15cqi,14px);line-height:1.7}
+  font-size:clamp(11.5px,2.42cqi,15.5px);line-height:1.72}
 .page > *{flex-shrink:0}
 .page{word-break:keep-all;overflow-wrap:break-word}
 .page p,.page dd,.page li,.page td{text-wrap:pretty}
@@ -809,14 +809,14 @@ html += spread('속표지 · Title page', page(`
 folio = 0;
 
 html += spread('Front matter · 기획 흐름 / 차례',
-  page(`<div class="eyebrow" style="color:var(--mute)">How this book was made</div><h2 class="t">한 컬러가 완성되기까지<em>From question to result</em></h2>
-    <p class="body-col">예측에서 멈추지 않았다.<br>기획하고, 디자인하고, 섞고, 입히고, 다시 보았다.</p>
+  page(`<div class="eyebrow" style="color:var(--mute)">How this book was made</div><h2 class="t">한 사람에서 시작한 컬러<em>How this book was made</em></h2>
+    <p class="body-col">이 책의 컬러는 모두 한 사람에서 출발했다.<br>누구에게 어울리는지 먼저 정하고, 그 답을 레벨과 배합으로 옮겨, 마네킹 위에서 확인했다.</p>
     <div class="flow">
-      <div><span class="no">01</span><span><b>기획</b><p>누구를 위한 색인가</p></span></div>
-      <div><span class="no">02</span><span><b>디자인</b><p>어떻게 보일 것인가</p></span></div>
-      <div><span class="no">03</span><span><b>조색</b><p>무엇으로 만들 것인가</p></span></div>
-      <div><span class="no">04</span><span><b>실습</b><p>손끝에서 구현되는가</p></span></div>
-      <div><span class="no">05</span><span><b>분석</b><p>의도대로 나왔는가</p></span></div>
+      <div><span class="no">01</span><span><b>기획</b><p>고객 한 사람을 정한다 · 컬러 스토리, 타깃, 퍼스널컬러</p></span></div>
+      <div><span class="no">02</span><span><b>디자인</b><p>어디에, 얼마나 보일지 정한다 · 컬러 배치, 컷, 스타일링</p></span></div>
+      <div><span class="no">03</span><span><b>조색</b><p>바탕 레벨에서 목표까지 계산한다 · 베이스, 제품, 산화제, 시간</p></span></div>
+      <div><span class="no">04</span><span><b>실습</b><p>마네킹 위에서 구현한다 · 시술 과정, 비포 & 애프터</p></span></div>
+      <div><span class="no">05</span><span><b>분석</b><p>목표와 결과를 비교한다 · 차이의 원인, 다음에 바꿀 점</p></span></div>
     </div>`,{cls:'chA'}),
   page(`<div class="eyebrow" style="color:var(--mute)">Contents</div><h2 class="t">차례<em>Contents</em></h2>
     <nav class="toc">${SECTIONS.map(([k,n,en,ko])=>`<a href="#${k}"><span class="no">${n}</span><span class="nm">${en}<small>${ko}</small></span><span class="pg">{{${k}}}</span></a>${k==='collection'?[CH[1],CH[2],CH[3],CH[0]].map(c=>`<a href="#${c.id}" class="sub"><span class="no"></span><span class="nm">${c.team} · ${c.ko}</span><span class="pg">{{${c.id}}}</span></a>`).join(''):''}`).join('')}</nav>`,{}),
@@ -852,8 +852,8 @@ const strip = arr => `<div class="strip">${arr.map(c=>`<i style="background:${c}
 html += spread('02 Color Message · 색이 이미지에 미치는 영향',
   page(`<h2 class="t">색은 인상을 바꾼다<em>How color shapes an image</em></h2>
     <div class="letter" style="font-size:1em">
-      <p class="lede">같은 컷, 같은 길이.<br>색 하나로 사람이 달라진다.</p>
-      <p>명도는 무게를, 채도는 성격을,<br>색온도는 거리를, 배치는 반전을 만든다.</p>
+      <p class="lede">같은 컷, 같은 길이.<br>레벨 하나, 채도 하나로 인상이 달라진다.</p>
+      <p>현장에서 컬러를 정할 때 보는 것은 네 가지다.<br><b>얼마나 밝게</b>(명도), <b>얼마나 선명하게</b>(채도),<br><b>따뜻하게 혹은 차갑게</b>(색온도), 그리고 <b>어디에</b>(배치).<br>이 책의 네 컬렉션은 이 네 가지를 서로 다르게 조합한 결과다.</p>
     </div>
     <p class="pull" style="margin-top:auto">색을 고른다는 것은<br>어떻게 보이고 싶은지를 고르는 일.</p>
     ${memo('02 Color Message 본문은 편집부 초안이에요. 교수님 관점으로 다듬어 주세요.','top:22cqi;right:5cqi')}`,{sec:'02 Color Message'}),
