@@ -182,6 +182,7 @@ table.fc sup{font-family:var(--f-data);font-size:.7em;color:var(--mute)}
 .tp-credits dd p b{font-family:var(--f-body)!important;font-weight:600!important;font-size:.8em!important;letter-spacing:.03em!important;word-spacing:0!important}
 .tp-credits dd{gap:2.4cqi!important}
 .roster h3,.qteam h3{font-family:var(--f-body)!important;font-weight:600!important;letter-spacing:.06em!important;word-spacing:0!important}
+.page .lede{font-family:var(--f-kr-display);font-size:1.18em;line-height:1.65;color:var(--ink)}
 .hairsw{background:
   linear-gradient(90deg,rgba(255,255,255,0) 18%,rgba(255,255,255,.28) 30%,rgba(255,255,255,0) 42%,rgba(255,255,255,0) 62%,rgba(255,255,255,.16) 70%,rgba(255,255,255,0) 78%),
   repeating-linear-gradient(90deg,rgba(0,0,0,.10) 0 1px,rgba(255,255,255,.07) 1px 2px,rgba(0,0,0,0) 2px 4px,rgba(0,0,0,.05) 4px 5px),
@@ -774,12 +775,12 @@ function chapter(ch){
 /* ---------- build ---------- */
 const COVER_BARS = ['#887B9B','#D4A3BC','#2E4163','#9AAAC4','#BBB0A6'];
 const SECTIONS = [
- ['opening','01','Opening','교수 인사말 및 발간 메시지'],
- ['message','02','Color Message','색이 이미지에 미치는 영향'],
- ['forecast','03','2027 Color Forecast','트렌드 분석 및 제안'],
- ['collection','04','Color Collection','4개 팀 컬러 디자인'],
- ['creators','05','Creators','참여 대학원생 프로필'],
- ['closing','06','Closing','컬러 메시지 및 제작 크레딧']
+ ['opening','01','Opening','여는 글'],
+ ['message','02','Color Message','색은 인상을 바꾼다'],
+ ['forecast','03','2027 Color Forecast','2027, 세 가지 신호'],
+ ['collection','04','Color Collection','네 팀, 네 가지 컬러'],
+ ['creators','05','Creators','만든 사람들'],
+ ['closing','06','Closing','닫는 글'],
 ];
 let html = '';
 const FAN = [{c:'#BBB0A6',n:'Urban Beige'},{c:'#2E4163',n:'Denim Navy'},{c:'#887B9B',n:'Lavender Mauve'},{c:'#9AAAC4',n:'Ash Sky'},{c:'#D4A3BC',n:'Mauve Pink'}];
@@ -808,14 +809,14 @@ html += spread('속표지 · Title page', page(`
 folio = 0;
 
 html += spread('Front matter · 기획 흐름 / 차례',
-  page(`<div class="eyebrow" style="color:var(--mute)">How this book was made</div><h2 class="t">예측에서 결과까지<em>From planning to analysis</em></h2>
-    <p class="body-col">이 책은 2027년의 컬러를 예측하는 데서 멈추지 않습니다.<br>모든 컬렉션은 다섯 단계를 거쳤고, 각 챕터도 같은 순서로 읽힙니다.</p>
+  page(`<div class="eyebrow" style="color:var(--mute)">How this book was made</div><h2 class="t">한 컬러가 완성되기까지<em>From question to result</em></h2>
+    <p class="body-col">예측에서 멈추지 않았다.<br>기획하고, 디자인하고, 섞고, 입히고, 다시 보았다.</p>
     <div class="flow">
-      <div><span class="no">01</span><span><b>컬러 기획</b><p>컬러 스토리 · 타깃 · 퍼스널컬러</p></span></div>
-      <div><span class="no">02</span><span><b>디자인</b><p>컬러 프로필 · 스타일링 · 코디</p></span></div>
-      <div><span class="no">03</span><span><b>조색</b><p>베이스 레벨 · 구간별 포뮬러</p></span></div>
-      <div><span class="no">04</span><span><b>실습</b><p>시술 과정 · 비포 & 애프터</p></span></div>
-      <div><span class="no">05</span><span><b>결과 분석</b><p>목표와 결과 비교 · 한계와 개선점</p></span></div>
+      <div><span class="no">01</span><span><b>기획</b><p>누구를 위한 색인가</p></span></div>
+      <div><span class="no">02</span><span><b>디자인</b><p>어떻게 보일 것인가</p></span></div>
+      <div><span class="no">03</span><span><b>조색</b><p>무엇으로 만들 것인가</p></span></div>
+      <div><span class="no">04</span><span><b>실습</b><p>손끝에서 구현되는가</p></span></div>
+      <div><span class="no">05</span><span><b>분석</b><p>의도대로 나왔는가</p></span></div>
     </div>`,{cls:'chA'}),
   page(`<div class="eyebrow" style="color:var(--mute)">Contents</div><h2 class="t">차례<em>Contents</em></h2>
     <nav class="toc">${SECTIONS.map(([k,n,en,ko])=>`<a href="#${k}"><span class="no">${n}</span><span class="nm">${en}<small>${ko}</small></span><span class="pg">{{${k}}}</span></a>${k==='collection'?[CH[1],CH[2],CH[3],CH[0]].map(c=>`<a href="#${c.id}" class="sub"><span class="no"></span><span class="nm">${c.team} · ${c.ko}</span><span class="pg">{{${c.id}}}</span></a>`).join(''):''}`).join('')}</nav>`,{}),
@@ -851,10 +852,10 @@ const strip = arr => `<div class="strip">${arr.map(c=>`<i style="background:${c}
 html += spread('02 Color Message · 색이 이미지에 미치는 영향',
   page(`<h2 class="t">색은 인상을 바꾼다<em>How color shapes an image</em></h2>
     <div class="letter" style="font-size:1em">
-      <p>같은 컷, 같은 길이라도 색이 바뀌면 사람의 인상이 달라집니다. 어두운 색은 무게와 신뢰를, 밝은 색은 가벼움과 화사함을 만듭니다. 채도를 낮추면 차분하고 세련되게, 높이면 개성과 에너지가 앞에 섭니다.</p>
-      <p>헤어 컬러가 이미지에 미치는 영향은 명도, 채도, 색온도, 그리고 색을 어디에 두느냐는 배치로 나누어 볼 수 있습니다. 이 책의 네 컬렉션은 모두 이 네 가지 변수를 의도적으로 조절한 결과입니다.</p>
+      <p class="lede">같은 컷, 같은 길이.<br>색 하나로 사람이 달라진다.</p>
+      <p>명도는 무게를, 채도는 성격을,<br>색온도는 거리를, 배치는 반전을 만든다.</p>
     </div>
-    <p class="pull" style="margin-top:auto">색을 고르는 일은 곧 그 사람이<br>어떻게 보이고 싶은지를 고르는 일입니다.</p>
+    <p class="pull" style="margin-top:auto">색을 고른다는 것은<br>어떻게 보이고 싶은지를 고르는 일.</p>
     ${memo('02 Color Message 본문은 편집부 초안이에요. 교수님 관점으로 다듬어 주세요.','top:22cqi;right:5cqi')}`,{sec:'02 Color Message'}),
   page(`<div class="eyebrow" style="color:var(--mute)">Four variables</div>
     <div class="vars">
@@ -871,15 +872,15 @@ const dirCard = c => c.waiting
   : `<div class="dir"><div class="ph ${c.dirImg?'':'field'}">${c.dirImg?`<img src="${IMG(c.dirImg)}" alt="${c.ko}" loading="lazy" style="object-position:center 25%">`:c.opener.field.map(x=>`<div style="background:${x}"></div>`).join('')}</div><b>${c.dir}</b><span>${c.dirKo} · ${c.ko}</span></div>`;
 const order = [CH[1],CH[2],CH[3],CH[0]];
 html += spread('03 2027 Color Forecast · 트렌드 분석 / 네 가지 방향',
-  page(`<h2 class="t">2027년, 세 가지 컬러 신호<em>Reading the direction</em></h2>
-    <p class="body-col">2027년 컬러 예측에서는 세 가지 흐름이 함께 읽힙니다. 올해의 색으로 꼽힌 블루, 패션과 헤어에 이어지는 라벤더, 그리고 헤어 컬러가 부드러워지는 크림·뉴트럴입니다. 이 책의 컬렉션은 세 흐름을 하나씩 우리 방식으로 해석했습니다.</p>
+  page(`<h2 class="t">2027, 세 가지 신호<em>Reading the direction</em></h2>
+    <p class="body-col lede">블루는 선명해지고,<br>라벤더는 부드러워지고,<br>베이지는 조용해진다.</p>
     <div class="tbl"><table class="fc"><thead><tr><th>2027 신호</th><th>무엇이 보이나</th><th>우리 컬렉션</th></tr></thead><tbody>
       <tr><td><i style="background:#4A6FB5"></i>블루</td><td>WGSN · Coloro가 2027 올해의 색으로 루미너스 블루 발표<sup>1</sup></td><td><b>시크리티브 틸</b><br><span class="mute">Team C · 소프트 블랙 아래 숨긴 블루</span></td></tr>
       <tr><td><i style="background:#9A86C0"></i>라벤더</td><td>패션위크에서 보라가 2027까지 이어지고<sup>2</sup>, 헤어 예측에 파스텔 라벤더 · 실버 라벤더가 등장<sup>3</sup></td><td><b>라벤더 모브</b><br><span class="mute">Team B · 파스텔에 딥 바이올렛 포인트</span></td></tr>
       <tr><td><i style="background:#CDBFAE"></i>크림 · 뉴트럴</td><td>헤어 예측에서 아이시 블론드 대신 크림 블론드, 붉은 기를 덜어낸 부드러운 톤<sup>4</sup></td><td><b>어반 베이지</b><br><span class="mute">Team D · 회색빛을 더한 저채도 베이지</span></td></tr>
       <tr><td><i style="background:#D5D6DA"></i>네 번째</td><td class="mute">Team A 방향 확정 후 추가</td><td class="mute">Team A</td></tr>
     </tbody></table></div>
-    <p class="body-col" style="font-size:.92em">세 컬렉션의 공통점도 있습니다. 이너·네이프처럼 움직일 때만 보이는 <b>숨은 포인트</b>, 원색 대신 회색빛으로 정돈한 <b>낮춘 채도</b>, 붉은 기와 노란 기를 덜어낸 <b>쿨 베이스</b>입니다.</p>
+    <p class="body-col" style="font-size:.92em"><b>숨기고, 낮추고, 식힌다.</b><br>움직일 때만 보이는 포인트, 회색빛으로 정돈한 채도, 붉은 기를 덜어낸 바탕. 세 컬렉션이 공통으로 고른 방식이다.</p>
     <ol class="srcs" style="margin-top:auto">
       <li>WGSN · Coloro, Colour of the Year 2027: Luminous Blue (2025.4)</li>
       <li>Who What Wear, Fashion Week Beauty Trends SS27</li>
@@ -912,7 +913,7 @@ mark('creators');
 const rosterTeam = c => `<div><h3 style="color:var(--k1)">${c.team} · ${c.ko}</h3><ul>${c.roles.map(([n])=>`<li><i></i><span>${n||'이름'}</span></li>`).join('')}</ul></div>`;
 html += spread('05 Creators · 참여자 전체',
   page(`<h2 class="t">이 책을 만든 사람들<em>The creators</em></h2>
-    <p class="body-col">건국대학교 교육대학원 미용교육전공 대학원생들이 네 팀으로 나뉘어<br>2027년의 컬러를 기획하고, 조색하고, 실습하고, 분석했습니다.</p>
+    <p class="body-col lede">스무 명의 대학원생, 네 개의 팀.<br>한 학기 동안 하나의 컬러를 끝까지 따라갔다.</p>
     <div style="display:grid;grid-template-columns:24cqi 1fr;gap:4cqi;align-items:center;border-top:1px solid var(--ink);padding-top:3cqi">
       <div class="prof-photo has-img" style="min-height:0;aspect-ratio:1/1;border-radius:50%;background:#fff"><img src="${IMG('prof_mk')}" alt="${PROF.name}" style="object-position:center center"></div>
       <div><h3 style="color:var(--mute)">Creative direction & education</h3><p class="prof-name" style="font-size:clamp(13px,2.9cqi,18px)">${PROF.name}</p><p class="mute">${PROF.org}</p></div>
@@ -932,7 +933,7 @@ mark('closing');
 html += spread('06 Closing · 컬러 메시지 / 제작 크레딧',
   page(`
     <h2 class="t" style="font-family:var(--f-latin);font-weight:400;font-size:clamp(26px,9cqi,56px);line-height:1;color:#16213E">COLOR<br><em style="display:inline;font-size:1em;color:#8A7BAE;margin:0">BEYOND</em><br>COLOR</h2>
-    <div class="letter" style="font-size:1em"><p>색은 결과가 아니라 질문에서 시작합니다. 어떤 사람에게, 어떤 이유로, 어떤 컬러를. 이 책에 담긴 네 가지 답이 다음 컬러를 기획하는 누군가에게 새로운 질문의 출발점이 되기를 바랍니다.</p></div>
+    <div class="letter" style="font-size:1.05em"><p>색은 답이 아니라<br>질문에서 시작된다.</p><p>어떤 사람에게, 어떤 이유로, 어떤 컬러를.</p><p>이 책의 네 가지 답이<br>당신의 다음 질문이 되기를.</p></div>
     <div class="bars" style="display:grid;grid-template-columns:repeat(5,1fr);gap:1.4cqi;margin-top:auto">${COVER_BARS.map(c=>`<i style="display:block;height:2.2cqi;border-radius:.6cqi;background:${c}"></i>`).join('')}</div>
     ${memo('마무리 메시지는 편집부 초안이에요.','top:6cqi;right:5cqi')}`,{sec:'06 Closing'}),
   page(`<div class="eyebrow" style="color:var(--mute)">Credits · 판권</div><h2 class="t">제작 크레딧<em>Credits</em></h2>
@@ -954,7 +955,7 @@ html += spread('06 Closing · 컬러 메시지 / 제작 크레딧',
     ${memo('외부 공개·ISBN 발행 여부에 따라 발행처, 저작권 문구, 참고문헌을 확정해야 해요.','top:6cqi;right:5cqi')}`,{sec:'06 Closing'}),
   'closing');
 
-html += spread('Back cover', page(`<div class="bk-top">2027<br>HAIR COLOR<br>TREND BOOK</div><div class="bk-mid"><p class="bk-q">어떤 사람에게, 어떤 이유로,<br>어떤 컬러를 제안할 것인가.</p><p class="bk-body">네 팀의 대학원생이 2027년의 헤어 컬러를 기획하고, 조색하고, 실습하고, 분석했습니다. 라벤더 모브, 시크리티브 틸, 어반 베이지, 그리고 네 번째 컬러까지. 색을 넘어 한 사람의 이미지를 디자인하는 과정을 담았습니다.</p></div><div class="bk-chips">${COVER_BARS.map(c=>`<i style="background:${c}"></i>`).join('')}</div><div class="bk-foot"><span>${COURSE}</span><span>${SCHOOL}</span></div>`,{cls:'back2',num:false,run:false}),'','',true);
+html += spread('Back cover', page(`<div class="bk-top">2027<br>HAIR COLOR<br>TREND BOOK</div><div class="bk-mid"><p class="bk-q">어떤 사람에게, 어떤 이유로,<br>어떤 컬러를 제안할 것인가.</p><p class="bk-body">스무 명의 대학원생이 2027년의 컬러를 기획하고, 섞고, 입히고, 다시 보았다.<br><br>라벤더 모브 · 시크리티브 틸 · 어반 베이지 · 코퍼<br><br>색을 넘어, 한 사람의 이미지를 디자인한 기록.</p></div><div class="bk-chips">${COVER_BARS.map(c=>`<i style="background:${c}"></i>`).join('')}</div><div class="bk-foot"><span>${COURSE}</span><span>${SCHOOL}</span></div>`,{cls:'back2',num:false,run:false}),'','',true);
 
 // fill TOC page numbers
 html = html.replace(/\{\{(\w+)\}\}/g,(m,k)=>START[k]?String(START[k]).padStart(2,'0'):'');
