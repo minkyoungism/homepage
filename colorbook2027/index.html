@@ -545,7 +545,7 @@ const IMG = n => IMGDATA[n] || `img/${n}.jpg`;
 const PROF = { name:'김민경', title:'Creative Direction & Education · Professor', org:'건국대학교 교육대학원 미용교육전공 담당교수' };
 
 const CH = [
- { id:'ch1', cls:'chA', team:'Team A', no:'A', ko:'코퍼', en:'Copper', dir:'Fourth Color Direction', dirKo:'코퍼 · 원고 제출 예정', waiting:true, members:'최애슬 · 서은희 · 이혜라 · 정윤전 · 홍성조', roles:[['최애슬',''],['서은희',''],['이혜라',''],['정윤전',''],['홍성조','']] },
+ { id:'ch1', cls:'chA', team:'Team A', no:'A', ko:'코퍼', en:'Copper', dir:'Fourth Color Direction', dirKo:'코퍼 · 원고 제출 예정', waiting:true, members:'서은희 · 이혜라 · 정윤전 · 최애슬 · 홍성조', roles:[['서은희',''],['이혜라',''],['정윤전',''],['최애슬',''],['홍성조','']] },
  { id:'ch2', cls:'chB', team:'Team B', no:'B', ko:'라벤더 모브', en:'Lavender Mauve', dir:'Soft Individuality', dirKo:'부드러운 개성',
    members:'김수진 · 김희진 · 이설아 · 이혜영 · 추서윤',
    tagline:'신비로움 · 부드러움 · 세련됨',
@@ -624,7 +624,7 @@ const CH = [
    }
  },
  { id:'ch4', cls:'chD', team:'Team D', no:'D', ko:'어반 베이지', en:'Urban Beige', dir:'Quiet Elegance', dirKo:'차분한 세련미',
-   members:'이혜순 · 장하린 · 민윤경 · 정혜정 · 최유라',
+   members:'민윤경 · 이혜순 · 장하린 · 정혜정 · 최유라',
    tagline:'화려한 색보다 은은한 분위기.',
    opener:{img:'D_s1_0', pos:'center 30%'}, dirImg:'D_s1_0',
    swatches:[{c:'#BBB0A6',n:'어반 베이지',h:'#BBB0A6'},{c:'#9C948C',n:'그레이 베이지',h:'HEX 미정',tbd:true},{c:'#D8CFC4',n:'페일 베이지',h:'HEX 미정',tbd:true}],
@@ -648,7 +648,7 @@ const CH = [
    outfits:['D_s10_0','D_s10_1','D_s10_2'],
    ba:[['D_s4_0','Before','시술 전 4면'],['D_s8_0','After','정면 · 측면'],['D_s8_1','After','후면 · 측면']],
    baText:'', result:'D_s8_0', checkRows:['탈색','염색','토닝'],
-   roles:[['이혜순',''],['장하린',''],['민윤경',''],['정혜정',''],['최유라','']],
+   roles:[['민윤경',''],['이혜순',''],['장하린',''],['정혜정',''],['최유라','']],
    memos:{
      title:'HEX는 #BBB0A6 하나뿐이에요. 키 컬러 2~3개를 정해 주세요. 원고 표지의 띠 색(갈색 계열)은 컬러명과 맞지 않아 이 초안에선 뺐어요.',
      story:'스토리의 "코토리 베이지"와 제목 "어반 베이지" 중 하나로 통일 필요. 톤도 "쿨"인데 가을 뮤트는 "따뜻하게"라 설명을 맞춰야 해요.',
@@ -941,7 +941,7 @@ html += spread('06 Closing · 컬러 메시지 / 제작 크레딧',
       <dt>책 이름</dt><dd>COLOR BEYOND COLOR · 2027 Hair Color Trend Book</dd>
       <dt>기획 · 편집</dt><dd>${PROF.name} (${PROF.org})</dd>
       <dt>공동 저자</dt><dd class="mute">아래 네 팀 20명</dd>
-      <dt>Team A</dt><dd>최애슬 · 서은희 · 이혜라 · 정윤전 · 홍성조</dd>
+      <dt>Team A</dt><dd>서은희 · 이혜라 · 정윤전 · 최애슬 · 홍성조</dd>
       ${CH.slice(1).map(c=>`<dt>${c.team}</dt><dd>${c.members}</dd>`).join('')}
       <dt>편집 · 디자인</dt><dd>${blank}</dd>
       <dt>발행일</dt><dd>${blank}</dd>
