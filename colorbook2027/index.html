@@ -542,7 +542,7 @@ const IMG = n => IMGDATA[n] || `img/${n}.jpg`;
 const PROF = { name:'김민경', title:'Creative Direction & Education · Professor', org:'건국대학교 교육대학원 미용교육전공 담당교수' };
 
 const CH = [
- { id:'ch1', cls:'chA', team:'Team A', no:'A', ko:'Fourth Color', en:'Fourth Color Direction', dir:'Fourth Color Direction', dirKo:'네 번째 컬러 방향성 추후 확정', waiting:true, members:'최애슬 · 서은희 · 이혜라 · 정윤전 · 홍성조', roles:[['최애슬',''],['서은희',''],['이혜라',''],['정윤전',''],['홍성조','']] },
+ { id:'ch1', cls:'chA', team:'Team A', no:'A', ko:'코퍼', en:'Copper', dir:'Fourth Color Direction', dirKo:'코퍼 · 원고 제출 예정', waiting:true, members:'최애슬 · 서은희 · 이혜라 · 정윤전 · 홍성조', roles:[['최애슬',''],['서은희',''],['이혜라',''],['정윤전',''],['홍성조','']] },
  { id:'ch2', cls:'chB', team:'Team B', no:'B', ko:'라벤더 모브', en:'Lavender Mauve', dir:'Soft Individuality', dirKo:'부드러운 개성',
    members:'김수진 · 김희진 · 이설아 · 이혜영 · 추서윤',
    tagline:'신비로움 · 부드러움 · 세련됨',
@@ -799,7 +799,7 @@ html += spread('속표지 · Title page', page(`
   <dl class="tp-credits">
     <div><dt>기획 · 편집</dt><dd class="tp-lead">${PROF.name}</dd></div>
     <div><dt>공동 저자</dt><dd>
-      ${[CH[0],CH[1],CH[2],CH[3]].map(c=>`<p class="${c.cls}"><b>${c.team}${c.waiting?'':' · '+c.ko}</b>${c.roles.map(r=>r[0]).join(' · ')}</p>`).join('')}
+      ${[CH[0],CH[1],CH[2],CH[3]].map(c=>`<p class="${c.cls}"><b>${c.team} · ${c.ko}</b>${c.roles.map(r=>r[0]).join(' · ')}</p>`).join('')}
     </dd></div>
   </dl>
   <p class="tp-course">${COURSE}<br>${SCHOOL}</p>`,{cls:'titlep',num:false,run:false}), '', 'titlepage', true);
@@ -816,7 +816,7 @@ html += spread('Front matter · 기획 흐름 / 차례',
       <div><span class="no">05</span><span><b>결과 분석</b><p>목표와 결과 비교 · 한계와 개선점</p></span></div>
     </div>`,{cls:'chA'}),
   page(`<div class="eyebrow" style="color:var(--mute)">Contents</div><h2 class="t">차례<em>Contents</em></h2>
-    <nav class="toc">${SECTIONS.map(([k,n,en,ko])=>`<a href="#${k}"><span class="no">${n}</span><span class="nm">${en}<small>${ko}</small></span><span class="pg">{{${k}}}</span></a>${k==='collection'?[CH[1],CH[2],CH[3],CH[0]].map(c=>`<a href="#${c.id}" class="sub"><span class="no"></span><span class="nm">${c.team} · ${c.waiting?'제출 예정':c.ko}</span><span class="pg">{{${c.id}}}</span></a>`).join(''):''}`).join('')}</nav>`,{}),
+    <nav class="toc">${SECTIONS.map(([k,n,en,ko])=>`<a href="#${k}"><span class="no">${n}</span><span class="nm">${en}<small>${ko}</small></span><span class="pg">{{${k}}}</span></a>${k==='collection'?[CH[1],CH[2],CH[3],CH[0]].map(c=>`<a href="#${c.id}" class="sub"><span class="no"></span><span class="nm">${c.team} · ${c.ko}</span><span class="pg">{{${c.id}}}</span></a>`).join(''):''}`).join('')}</nav>`,{}),
   'contents');
 
 mark('opening');
@@ -907,7 +907,7 @@ html += `<div id="collection"></div>`;
 order.forEach(ch=>{ html += chapter(ch); });
 
 mark('creators');
-const rosterTeam = c => `<div><h3 style="color:var(--k1)">${c.team} · ${c.waiting?'제출 예정':c.ko}</h3><ul>${c.roles.map(([n])=>`<li><i></i><span>${n||'이름'}</span></li>`).join('')}</ul></div>`;
+const rosterTeam = c => `<div><h3 style="color:var(--k1)">${c.team} · ${c.ko}</h3><ul>${c.roles.map(([n])=>`<li><i></i><span>${n||'이름'}</span></li>`).join('')}</ul></div>`;
 html += spread('05 Creators · 참여자 전체',
   page(`<h2 class="t">이 책을 만든 사람들<em>The creators</em></h2>
     <p class="body-col">건국대학교 교육대학원 미용교육전공 대학원생들이 네 팀으로 나뉘어<br>2027년의 컬러를 기획하고, 조색하고, 실습하고, 분석했습니다.</p>
@@ -919,7 +919,7 @@ html += spread('05 Creators · 참여자 전체',
   page(`<div class="eyebrow" style="color:var(--mute)">Meet the creators</div><div class="roster">${[CH[1],CH[2],CH[3],CH[0]].map(c=>`<div class="${c.cls}">${rosterTeam(c)}</div>`).join('')}</div>`,{sec:'05 Creators'}),
   'creators');
 
-const quoteTeam = c => `<div class="${c.cls} qteam"><h3 style="color:var(--k1)">${c.team} · ${c.waiting?'제출 예정':c.ko}</h3>${c.roles.map(([n])=>`<div class="q"><i></i><p class="qline">“<span class="blank"></span>”</p><span class="qname">${n||'이름'}</span></div>`).join('')}</div>`;
+const quoteTeam = c => `<div class="${c.cls} qteam"><h3 style="color:var(--k1)">${c.team} · ${c.ko}</h3>${c.roles.map(([n])=>`<div class="q"><i></i><p class="qline">“<span class="blank"></span>”</p><span class="qname">${n||'이름'}</span></div>`).join('')}</div>`;
 html += spread('05 Creators · 한 문장 컬러 철학',
   page(`<div class="eyebrow" style="color:var(--mute)">Color philosophy</div><h2 class="t">한 문장 컬러 철학<em>In their words</em></h2>
     <p class="body-col mute" style="font-size:.92em">참여자 한 사람 한 사람이 자신의 컬러 디자인 철학을 한 문장으로 남겼습니다.</p>
