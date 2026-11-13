@@ -542,7 +542,7 @@ const IMG = n => IMGDATA[n] || `img/${n}.jpg`;
 const PROF = { name:'김민경', title:'Creative Direction & Education · Professor', org:'건국대학교 교육대학원 미용교육전공 담당교수' };
 
 const CH = [
- { id:'ch1', cls:'chA', team:'Team A', no:'A', ko:'Fourth Color', en:'Fourth Color Direction', dir:'Fourth Color Direction', dirKo:'네 번째 컬러 방향성 추후 확정', waiting:true, roles:[['','',''],['','',''],['','',''],['','',''],['','','']] },
+ { id:'ch1', cls:'chA', team:'Team A', no:'A', ko:'Fourth Color', en:'Fourth Color Direction', dir:'Fourth Color Direction', dirKo:'네 번째 컬러 방향성 추후 확정', waiting:true, members:'최애슬 · 서은희 · 이혜라 · 정윤전 · 홍성조', roles:[['최애슬',''],['서은희',''],['이혜라',''],['정윤전',''],['홍성조','']] },
  { id:'ch2', cls:'chB', team:'Team B', no:'B', ko:'라벤더 모브', en:'Lavender Mauve', dir:'Soft Individuality', dirKo:'부드러운 개성',
    members:'김수진 · 김희진 · 이설아 · 이혜영 · 추서윤',
    tagline:'신비로움 · 부드러움 · 세련됨',
@@ -799,7 +799,7 @@ html += spread('속표지 · Title page', page(`
   <dl class="tp-credits">
     <div><dt>기획 · 편집</dt><dd class="tp-lead">${PROF.name}</dd></div>
     <div><dt>지은이</dt><dd>
-      ${[CH[0],CH[1],CH[2],CH[3]].map(c=>`<p class="${c.cls}"><b>${c.team}${c.waiting?'':' · '+c.ko}</b>${c.waiting?'<span class="mute">명단 대기</span>':c.roles.map(r=>r[0]).join(' · ')}</p>`).join('')}
+      ${[CH[0],CH[1],CH[2],CH[3]].map(c=>`<p class="${c.cls}"><b>${c.team}${c.waiting?'':' · '+c.ko}</b>${c.roles.map(r=>r[0]).join(' · ')}</p>`).join('')}
     </dd></div>
   </dl>
   <p class="tp-course">${COURSE}<br>${SCHOOL}</p>`,{cls:'titlep',num:false,run:false}), '', 'titlepage', true);
@@ -937,7 +937,7 @@ html += spread('06 Closing · 컬러 메시지 / 제작 크레딧',
     <dl class="colophon">
       <dt>책 이름</dt><dd>COLOR BEYOND COLOR · 2027 Hair Color Trend Book</dd>
       <dt>기획 · 총괄</dt><dd>${PROF.name} (${PROF.org})</dd>
-      <dt>Team A</dt><dd class="mute">제출 예정</dd>
+      <dt>Team A</dt><dd>최애슬 · 서은희 · 이혜라 · 정윤전 · 홍성조</dd>
       ${CH.slice(1).map(c=>`<dt>${c.team}</dt><dd>${c.members}</dd>`).join('')}
       <dt>편집 · 디자인</dt><dd>${blank}</dd>
       <dt>발행일</dt><dd>${blank}</dd>
