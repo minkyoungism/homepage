@@ -165,13 +165,15 @@ table.fc sup{font-family:var(--f-data);font-size:.7em;color:var(--mute)}
 .bv-leaf.go .face::after{opacity:1}
 .bv-gap{flex:none}
 .bv-page{background:var(--paper);overflow:hidden;position:relative;flex:none}
-.bv-page > .page{position:absolute;top:0;left:50%;transform-origin:top center;margin:0}
+.bvbox > .page{position:relative;margin:0}
 .bv-page.blank{background:#F3F0F5}
 .bv-hit{position:absolute;top:0;bottom:0;width:50%;background:transparent;border:0;cursor:pointer}
 .bv-hit.l{left:0}.bv-hit.r{right:0}
 .bv-hit:focus-visible{outline:2px solid var(--desk-ink);outline-offset:-4px}
 @media (prefers-reduced-motion:reduce){.bv-spread{transition:none}}
-.measure{position:absolute;left:-99999px;top:0;visibility:hidden}
+.measure{position:absolute;left:-99999px;top:0;visibility:hidden;width:620px;container-type:inline-size}
+.bvbox{position:absolute;top:0;left:50%;width:620px;container-type:inline-size;transform-origin:top center}
+.measure > .page,.bvbox > .page{gap:4.6cqi}
 .eyebrow,.run,.spread-label,.tp-credits dt,dl.spec dt,.cvlist dt,.looks dt,.kw .no,.flow .no{word-break:keep-all}
 .eyebrow{letter-spacing:.08em}
 .person .role{letter-spacing:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -249,7 +251,7 @@ h2.t em.cb{display:inline!important;font-size:1em!important;color:#8A7BAE;margin
 .mood-wide{margin:1cqi 0 0!important;aspect-ratio:2.1/1!important}
 .pq{margin:0;padding:.4em 0 .4em 1.2em;border-left:1px solid var(--ink);font-family:var(--f-kr-display);font-style:italic;font-size:1.02em;line-height:1.7;color:#3A3D52}
 .page.split > *{margin-top:0!important}
-.tnote{margin:-2.4cqi 0 0;padding:0;font-size:.86em;color:var(--mute);line-height:1.7}
+.tnote{margin:.9em 0 0;padding:0;font-size:.86em;color:var(--mute);line-height:1.7}
 .dir .ph{aspect-ratio:5/4!important}
 .dir .ph img{object-position:center 22%!important}
 .dirs{gap:2.6cqi 2.4cqi!important}
@@ -960,13 +962,13 @@ const order = [CH[1],CH[2],CH[3],CH[0]];
 html += spread('03 2027 Color Direction · 트렌드 분석 / 네 가지 방향',
   page(`<div class="eyebrow" style="color:var(--mute)">Research &amp; selection</div><h2 class="t">2027 컬러 방향을 선정하며<em>Research notes</em></h2>
     <p class="body-col">2027년 컬러 방향은 외부 트렌드 자료를 검토하고, 헤어컬러 디자인에 적용할 수 있는 색의 특성을 팀별로 해석하는 방식으로 구성했습니다.</p>
-    <div class="tbl"><table class="fc"><thead><tr><th>2027 신호</th><th>무엇이 보이나</th><th>우리 컬렉션</th></tr></thead><tbody>
+    <div class="tblwrap"><div class="tbl"><table class="fc"><thead><tr><th>2027 신호</th><th>무엇이 보이나</th><th>우리 컬렉션</th></tr></thead><tbody>
       <tr><td><i style="background:#4A6FB5"></i>블루</td><td>WGSN · Coloro가 2027 올해의 색으로 루미너스 블루 발표<sup>1</sup></td><td><b>시크리티브 틸</b><br><span class="mute">Team C · 소프트 블랙 아래 숨긴 블루</span></td></tr>
       <tr><td><i style="background:#9A86C0"></i>라벤더</td><td>패션위크에서 보라가 2027까지 이어지고<sup>2</sup>, 헤어 예측에 파스텔 라벤더 · 실버 라벤더가 등장<sup>3</sup></td><td><b>라벤더 모브</b><br><span class="mute">Team B · 파스텔에 딥 바이올렛 포인트</span></td></tr>
       <tr><td><i style="background:#CDBFAE"></i>크림 · 뉴트럴</td><td>헤어 예측에서 아이시 블론드 대신 크림 블론드, 붉은 기를 덜어낸 부드러운 톤<sup>4</sup></td><td><b>어반 베이지</b><br><span class="mute">Team D · 회색빛을 더한 저채도 베이지</span></td></tr>
       <tr><td><i style="background:#B87355"></i>코퍼</td><td class="mute">원고 제출 후 근거 추가</td><td><b>코퍼</b><br><span class="mute">Team A · 원고 제출 예정</span></td></tr>
     </tbody></table></div>
-    <p class="tnote">팀별 컬러는 외부 기관이 공식 선정한 색과 구분해 표기했습니다.<br>표의 트렌드 자료는 각 팀이 컬러를 해석하는 출발점으로 사용했습니다.</p>
+    <p class="tnote">팀별 컬러는 외부 기관이 공식 선정한 색과 구분해 표기했습니다.<br>표의 트렌드 자료는 각 팀이 컬러를 해석하는 출발점으로 사용했습니다.</p></div>
     <div class="fnote"><ol class="srcs">
       <li>WGSN · Coloro, Colour of the Year 2027: Luminous Blue (2025.4)</li>
       <li>Who What Wear, Fashion Week Beauty Trends SS27</li>
@@ -1080,8 +1082,9 @@ if(cp) cp.addEventListener('click',()=>{
   }
   function wrapPage(c, bg, sc){
     const fp=document.createElement('div'); fp.className='bv-page'; fp.style.width=W+'px'; fp.style.height=H+'px';
-    c.style.transform='translateX(-50%) scale('+sc+')';
-    fp.style.background=bg; fp.appendChild(c); return fp;
+    c.style.transform=''; const box=document.createElement('div'); box.className='bvbox';
+    box.style.transform='translateX(-50%) scale('+sc+')'; box.appendChild(c);
+    fp.style.background=bg; fp.appendChild(box); return fp;
   }
   function makePage(page){
     if(!page){ const fp=document.createElement('div'); fp.className='bv-page blank'; fp.style.width=W+'px'; fp.style.height=H+'px'; return [fp]; }
