@@ -902,8 +902,8 @@ html += spread('02 Color & Image · 헤어컬러를 읽는 네 가지 기준',
   page(`<div class="eyebrow" style="color:var(--mute)">Color framework</div><h2 class="t">컬러를 읽는 네 가지 기준<em>Value · Chroma · Temperature · Placement</em></h2>
     <div class="vars">
       <div class="var"><h3 style="color:var(--ink)">명도 · Value</h3>${strip([16,32,50,68,86].map(l=>`hsl(265 16% ${l}%)`))}<div class="ends"><span>어둡게</span><span>밝게</span></div></div>
-      <div class="var"><h3 style="color:var(--ink)">채도 · Chroma</h3>${strip([0,12,24,36,48].map(s=>`hsl(270 ${s}% 58%)`))}<div class="ends"><span>차분하게</span><span>선명하게</span></div></div>
-      <div class="var"><h3 style="color:var(--ink)">색온도 · Temperature</h3>${strip(['hsl(28 45% 60%)','hsl(30 25% 66%)','hsl(30 6% 68%)','hsl(215 20% 66%)','hsl(218 32% 58%)'])}<div class="ends"><span>따뜻하게</span><span>차갑게</span></div></div>
+      <div class="var"><h3 style="color:var(--ink)">채도 · Chroma</h3>${strip([0,20,40,60,82].map(s=>`hsl(272 ${s}% 52%)`))}<div class="ends"><span>차분하게</span><span>선명하게</span></div></div>
+      <div class="var"><h3 style="color:var(--ink)">색온도 · Temperature</h3>${strip(['hsl(36 40% 63%)','hsl(34 20% 63%)','hsl(40 3% 63%)','hsl(212 20% 63%)','hsl(214 40% 63%)'])}<div class="ends"><span>따뜻하게</span><span>차갑게</span></div></div>
       <div class="var"><h3 style="color:var(--ink)">배치 · Placement</h3><div class="place"><div><b>페이스라인</b>얼굴 인상에 직접 닿는 자리. 피부 톤과의 조화가 핵심</div><div><b>전체</b>이미지 전체가 바뀌는 선택. 명도 대비로 무게 조절</div><div><b>이너 · 네이프</b>움직일 때만 드러나는 반전. 부담은 낮추고 개성은 남김</div></div></div>
     </div>`,{sec:'02 Color & Image'}),
   'message');
