@@ -798,7 +798,7 @@ html += spread('속표지 · Title page', page(`
   <div class="tp-title"><h1>COLOR <em>BEYOND</em> COLOR</h1><p>색을 넘어, 이미지를 디자인하다</p></div>
   <dl class="tp-credits">
     <div><dt>기획 · 편집</dt><dd class="tp-lead">${PROF.name}</dd></div>
-    <div><dt>지은이</dt><dd>
+    <div><dt>공동 저자</dt><dd>
       ${[CH[0],CH[1],CH[2],CH[3]].map(c=>`<p class="${c.cls}"><b>${c.team}${c.waiting?'':' · '+c.ko}</b>${c.roles.map(r=>r[0]).join(' · ')}</p>`).join('')}
     </dd></div>
   </dl>
@@ -936,7 +936,8 @@ html += spread('06 Closing · 컬러 메시지 / 제작 크레딧',
   page(`<div class="eyebrow" style="color:var(--mute)">Credits · 판권</div><h2 class="t">제작 크레딧<em>Credits</em></h2>
     <dl class="colophon">
       <dt>책 이름</dt><dd>COLOR BEYOND COLOR · 2027 Hair Color Trend Book</dd>
-      <dt>기획 · 총괄</dt><dd>${PROF.name} (${PROF.org})</dd>
+      <dt>기획 · 편집</dt><dd>${PROF.name} (${PROF.org})</dd>
+      <dt>공동 저자</dt><dd class="mute">아래 네 팀 20명</dd>
       <dt>Team A</dt><dd>최애슬 · 서은희 · 이혜라 · 정윤전 · 홍성조</dd>
       ${CH.slice(1).map(c=>`<dt>${c.team}</dt><dd>${c.members}</dd>`).join('')}
       <dt>편집 · 디자인</dt><dd>${blank}</dd>
